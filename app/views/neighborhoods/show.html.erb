@@ -8,7 +8,9 @@
 
 		<p>Monthly Rent: <%= @noko[:monthly_rent] %></p>
 		<%= image_tag("#{@noko[:img_url]}") %><br>
-		<%= link_to("View This Listing", @noko[:listing_url]) %>
+		<%= link_to("View This Listing", @noko[:listing_url]) %><br>
+		<%= link_to("More Listings", @noko[:search_url]) %>
+
 	</div>
 
 	<div class="col-md-6">
