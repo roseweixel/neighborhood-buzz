@@ -1,5 +1,7 @@
 <h1>NYC Neighborhoods</h1>
 
-<ul>
-	<%= render @neighborhoods %>
-</ul>
+<%= form_for(@neighborhood, :id => "neighborhood_selector") do |f| %>
+     <%= f.collection_select :id, Neighborhood.all,:id,:name, :prompt => "Please select neighborhood" %>
+    <%= f.submit value: "Let's Go!" %>
+<% end %>
+
