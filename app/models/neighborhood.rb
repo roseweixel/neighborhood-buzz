@@ -42,10 +42,6 @@ class Neighborhood < ActiveRecord::Base
 
   def get_yelp_top_three_bars
     info = []
-    ## things we want
-    # Neighborhood.first.get_yelp_top_three_bars.first.name
-    # Neighborhood.first.get_yelp_top_three_bars.first.url
-    # Neighborhood.first.get_yelp_top_three_bars.first.location.address
     params = { term: 'bar',
                limit: 3,
                sort: 2 # sort by rating
