@@ -34,6 +34,17 @@ class Neighborhood < ActiveRecord::Base
     consumer_secret = "iQjeTUp-MR6MAlqMKnUTiEgGEJ4"
     token = "wzhKqRw5S7mkd4Ht4b9ekQ9-LMrY3bvp"
     token_secret = "yX5fI-fEpWd5hKerthzzwujq-7U"
+    params = { term: 'bar',
+               limit: 3,
+               sort: 2
+         }
+    client = Yelp::Client.new({ consumer_key: consumer_key,
+                                consumer_secret: consumer_secret,
+                                token: token,
+                                token_secret: token_secret
+                              })
+    result = client.search('East Village', params)
+
   end
 
  
