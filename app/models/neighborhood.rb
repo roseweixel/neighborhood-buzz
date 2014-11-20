@@ -11,11 +11,10 @@ class Neighborhood < ActiveRecord::Base
 
     def find_neighborhood_percentile
         type = "json"
-        url = "http://api.nytimes.com/svc/real-estate/v2/listings/count.#{type}?geo-extent-level=neighborhood&geo-extent-value=#{urlified_name}&geo-summary-level=zip&date-range=2008-Q1&bedrooms=3&api-key=#{API_KEY}"
+        url = "http://api.nytimes.com/svc/real-estate/v2/listings/percentile/50.#{type}?date-range=2014-10&geo-extent-level=neighborhood&geo-extent-value=#{urlified_name}&api-key=#{API_KEY}"
         info_hash = JSON.load(open(url))
         puts info_hash.inspect
     end
-
-
+ 
 
 end
