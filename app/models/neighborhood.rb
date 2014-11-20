@@ -3,6 +3,8 @@ require 'date'
 
 class Neighborhood < ActiveRecord::Base
 
+  SE_API_KEY = "a4e83294da970c9775f1b4e35dbbe1f87299c242"
+
   def urlified_name
     name.gsub(" ", "+")
   end
@@ -35,5 +37,24 @@ class Neighborhood < ActiveRecord::Base
   end
 
  
+    def find_se_rentals
+        url = "http://streeteasy.com/nyc/api/rentals/data?criteria=area:#{urlified_name}-#{borough}\|beds:2&key=#{SE_API_KEY}&format=json"
+        encoded_url = URI.encode(url)
+        info_hash = JSON.load(open(encoded_url))
+  
+        {median_price: info_hash["median_price"], search_url: info_hash["search_url"]}
+    end
+
+    def noko_listing
+        ret_hash = {}
+        listings_page = Nokogiri::HTML(open(find_se_rentals[:search_url]))
+        ret_hash[:img_url] = listings_page.css(".left-two-thirds .photo img").first.attributes["src"].value
+        root_url = "http://streeteasy.com"
+        append_url = listings_page.css(".details-title a").first.attributes["href"].value
+        ret_hash[:listing_url] = root_url + append_url
+        ret_hash[:monthly_rent] = listings_page.css(".price").first.children.text
+        ret_hash
+    end
+
 
 end
