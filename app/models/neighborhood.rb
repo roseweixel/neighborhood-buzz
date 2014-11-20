@@ -26,6 +26,7 @@ class Neighborhood < ActiveRecord::Base
         type = "json"
         url = "http://api.nytimes.com/svc/real-estate/v2/listings/percentile/50.#{type}?date-range=#{get_year}-W#{get_week}&geo-extent-level=neighborhood&geo-extent-value=#{urlified_name}&api-key=#{API_KEY}"
         info_hash = JSON.load(open(url))
+        info_hash["results"][0]["listing_price"]
     end
  
 
