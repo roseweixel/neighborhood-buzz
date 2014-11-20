@@ -1,1 +1,6 @@
-<li><%= neighborhood.name %></li>
+<%#= collection_select(Neighborhood, :name, Neighborhood.all.sort_by{|n| n.name}, :name, :name,{:include_blank => "Please select neighborhood type"})%>
+<ul>
+<% @neighborhoods.each do |n| %>
+  <li><%= link_to n.name, neighborhood_path(n) %></li>
+<% end  %>
+</ul>
