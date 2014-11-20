@@ -34,3 +34,7 @@ api-key=019d22d7db27f8ef0242efc21d8d645e%3A19%3A70210388
 {"borough":"Manhattan","neighborhood":"Village"},
 {"borough":"Manhattan","neighborhood":"Washington Heights"},
 {"borough":"Manhattan","neighborhood":"West Village"}]}}
+
+
+
+http://api.nytimes.com/svc/real-estate/v2/listings/percentile/50.json?date-range=2014-10&geo-extent-level=neighborhood&geo-extent-value=lower+east+side&api-key=019d22d7db27f8ef0242efc21d8d645e%3A19%3A70210388 
