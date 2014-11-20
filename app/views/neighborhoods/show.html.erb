@@ -1,3 +1,13 @@
 <h1><%= @neighborhood.name %></h1>
 
-<p><%= @neighborhood.find_50th_percentile %></p>
+<p>Average Sale Price: <%= @neighborhood.find_50th_percentile %></p>
+<br>
+<br>
+<br>
+<br>
+
+<h3>Sample 2 Bedroom Rental:</h3>
+
+<p>Monthly Rent: <%= @noko[:monthly_rent] %></p>
+<%= image_tag("#{@noko[:img_url]}") %><br>
+<%= link_to("View This Listing", @noko[:listing_url]) %>

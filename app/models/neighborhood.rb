@@ -48,7 +48,7 @@ class Neighborhood < ActiveRecord::Base
     def noko_listing
         ret_hash = {}
         listings_page = Nokogiri::HTML(open(find_se_rentals[:search_url]))
-        ret_hash[:img_url] = listings_page.css(".left-two-thirds .photo img").first.attributes["src"].value
+        ret_hash[:img_url] = listings_page.css(".left-two-thirds .photo img").first.attributes["data-original"].value
         root_url = "http://streeteasy.com"
         append_url = listings_page.css(".details-title a").first.attributes["href"].value
         ret_hash[:listing_url] = root_url + append_url
