@@ -5,6 +5,7 @@ class NeighborhoodsController < ApplicationController
 
     def show
         @neighborhood = Neighborhood.find(params[:id])
+        @noko = @neighborhood.noko_listing
     end
 
 end
