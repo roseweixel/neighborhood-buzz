@@ -1,8 +1,9 @@
-http://api.nytimes.com/svc/real-estate/v2/
-neighborhoods.json?borough=Manhattan&
-api-key=019d22d7db27f8ef0242efc21d8d645e%3A19%3A70210388 
+### Manhattan
 
-{"status":"OK","copyright":"Copyright (c) 2014 The New York Times Company.  All Rights Reserved.","results":{"neighborhoods":[{"borough":"Manhattan","neighborhood":"Battery Park City"},
+http://api.nytimes.com/svc/real-estate/v2/neighborhoods.json?borough=Manhattan&api-key=019d22d7db27f8ef0242efc21d8d645e%3A19%3A70210388 
+
+{"status":"OK","copyright":"Copyright (c) 2014 The New York Times Company.  All Rights Reserved.","results":{"neighborhoods":[
+{"borough":"Manhattan","neighborhood":"Battery Park City"},
 {"borough":"Manhattan","neighborhood":"Carnegie Hill"},
 {"borough":"Manhattan","neighborhood":"Chelsea"},
 {"borough":"Manhattan","neighborhood":"East Harlem"},
@@ -35,6 +36,18 @@ api-key=019d22d7db27f8ef0242efc21d8d645e%3A19%3A70210388
 {"borough":"Manhattan","neighborhood":"Washington Heights"},
 {"borough":"Manhattan","neighborhood":"West Village"}]}}
 
+### end of Manhattan
+
+### Queens
+
+http://api.nytimes.com/svc/real-estate/v2/neighborhoods.json?borough=Queens&api-key=019d22d7db27f8ef0242efc21d8d645e%3A19%3A70210388 
+
+{"status":"OK","copyright":"Copyright (c) 2014 The New York Times Company.  All Rights Reserved.","results":{"neighborhoods":[{"borough":"Queens","neighborhood":"Arverne"},{"borough":"Queens","neighborhood":"Astoria"},{"borough":"Queens","neighborhood":"Bayside"},{"borough":"Queens","neighborhood":"Beechhurst"},{"borough":"Queens","neighborhood":"Bellerose"},{"borough":"Queens","neighborhood":"Breezy Point"},{"borough":"Queens","neighborhood":"Briarwood"},{"borough":"Queens","neighborhood":"Broad Channel"},{"borough":"Queens","neighborhood":"Cambria Heights"},{"borough":"Queens","neighborhood":"College Point"},{"borough":"Queens","neighborhood":"Corona"},{"borough":"Queens","neighborhood":"Douglaston"},{"borough":"Queens","neighborhood":"East Elmhurst"},{"borough":"Queens","neighborhood":"Elmhurst"},{"borough":"Queens","neighborhood":"Far Rockaway"},{"borough":"Queens","neighborhood":"Floral Park"},{"borough":"Queens","neighborhood":"Flushing"},{"borough":"Queens","neighborhood":"Forest Hills"},{"borough":"Queens","neighborhood":"Fresh Meadows"},{"borough":"Queens","neighborhood":"Glen Oaks"},{"borough":"Queens","neighborhood":"Glendale"},{"borough":"Queens","neighborhood":"Hollis"},{"borough":"Queens","neighborhood":"Howard Beach"},{"borough":"Queens","neighborhood":"Jackson Heights"},{"borough":"Queens","neighborhood":"Jamaica"},{"borough":"Queens","neighborhood":"JFK Airport"},{"borough":"Queens","neighborhood":"Kew Gardens"},{"borough":"Queens","neighborhood":"Kew Gardens Hills"},{"borough":"Queens","neighborhood":"Little Neck"},{"borough":"Queens","neighborhood":"Long Island City"},{"borough":"Queens","neighborhood":"Maspeth"},{"borough":"Queens","neighborhood":"Middle Village"},{"borough":"Queens","neighborhood":"Ozone Park"},{"borough":"Queens","neighborhood":"Queens Village"},{"borough":"Queens","neighborhood":"Rego Park"},{"borough":"Queens","neighborhood":"Richmond Hill"},{"borough":"Queens","neighborhood":"Ridgewood"},{"borough":"Queens","neighborhood":"Rockaway Park"},{"borough":"Queens","neighborhood":"Rosedale"},{"borough":"Queens","neighborhood":"South Jamaica"},{"borough":"Queens","neighborhood":"South Ozone Park"},{"borough":"Queens","neighborhood":"Springfield Gardens"},{"borough":"Queens","neighborhood":"St. Albans"},{"borough":"Queens","neighborhood":"Sunnyside"},{"borough":"Queens","neighborhood":"Utopia"},{"borough":"Queens","neighborhood":"Whitestone"},{"borough":"Queens","neighborhood":"Woodhaven"},{"borough":"Queens","neighborhood":"Woodside"}]}}
+
+### end of Queens
 
 
+
+
+### url for getting neighborhood listings percentile
 http://api.nytimes.com/svc/real-estate/v2/listings/percentile/50.json?date-range=2014-10&geo-extent-level=neighborhood&geo-extent-value=lower+east+side&api-key=019d22d7db27f8ef0242efc21d8d645e%3A19%3A70210388 
