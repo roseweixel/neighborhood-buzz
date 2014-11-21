@@ -51,7 +51,7 @@ class Neighborhood < ActiveRecord::Base
                limit: 3,
                sort: 2 # sort by rating
          }
-    results = YELP_CLIENT.search(name, params).businesses
+    results = YELP_CLIENT.search("#{name}, New York", params).businesses
     results.each do |result|
       temp_hash = {}
       temp_hash[:name] = result.name
@@ -69,7 +69,7 @@ class Neighborhood < ActiveRecord::Base
                limit: 3,
                sort: 2 # sort by rating
          }
-    results = YELP_CLIENT.search(name, params).businesses
+    results = YELP_CLIENT.search("#{name}, New York", params).businesses
     results.each do |result|
       temp_hash = {}
       temp_hash[:name] = result.name
