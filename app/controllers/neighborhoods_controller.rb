@@ -12,8 +12,15 @@ class NeighborhoodsController < ApplicationController
     def show
         @neighborhood = Neighborhood.find(params[:id])
         @noko = @neighborhood.noko_listing
+        @favorite_id = nil
+
         if session[:user_id]
+            #binding.pry
             @user = User.find(session[:user_id])
+            @user.favorites.each do |favorite|
+               @favorite_id = favorite.id if favorite.neighborhood_id == @neighborhood.id
+               @favorite = Favorite.find(@favorite_id)
+            end
         else
             @user = User.new
         end

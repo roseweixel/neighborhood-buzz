@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post '/sessions' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
+  resources :favorites, only: [:create, :destroy]
+
   root 'neighborhoods#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

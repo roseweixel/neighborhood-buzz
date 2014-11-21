@@ -1,6 +1,18 @@
 <div class="row">
 	<h1 class="col-md-8"><%= @neighborhood.name %></h1>
-	<h1 class="col-md-4"><%= button_to "Add Favorite", "#", :class => "btn btn-success pull-right"  %></h1>
+	<h1 class="col-md-4">
+
+  <% if @favorite_id %>
+
+    <%= button_to "Remove Favorite", @favorite, method: :delete, :class => "btn btn-success pull-right"  %>
+
+  <% else %>
+
+	 <%= button_to "Add Favorite", favorites_path, params: {"favorite[user_id]" => @user.id, "favorite[neighborhood_id]" => @neighborhood.id}, :class => "btn btn-success pull-right"  %>
+
+  <% end %>
+
+	</h1>
 </div>
 <div class="row">
 	<div class="col-md-4">
