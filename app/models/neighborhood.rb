@@ -98,5 +98,24 @@ class Neighborhood < ActiveRecord::Base
       ret_hash
   end
 
+  def twitterified_name
+    name.gsub(" ", "")
+  end
+
+  # def get_tweets
+  #   api_key = "N1cBxsbxHoImqQp1bikNXmoZh"
+  #   consumer_secret = "zBeYHbAOsXBxEN8y9X3t5TtB5GMZwgSLJM8cviTlebH9NmmSOn"
+  #   client = Twitter::REST::Client.new do |config|
+  #     config.consumer_key        = api_key
+  #     config.consumer_secret     = consumer_secret
+  #   end
+  #   tweets = []
+  #   client.search("##{twitterified_name}").each do |tweet|
+  #     tweets << tweet.text
+  #     if tweets.count == 5
+  #       return tweets
+  #     end
+  #   end
+  # end
 
 end
