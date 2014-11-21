@@ -37,7 +37,6 @@
 		<h3>What People Are Saying About <%= @neighborhood.name %></h3>
 		<% @neighborhood.get_tweets.each do |tweet| %>
 			<blockquote class="twitter-tweet" lang="en">
-				<p><%= tweet.text %></p>
 				<a href="<%= tweet.url %>"></a>
 			</blockquote>
 			<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
