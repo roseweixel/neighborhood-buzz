@@ -2,6 +2,11 @@ require 'open-uri'
 require 'date'
 
 class Neighborhood < ActiveRecord::Base
+  has_many :favorites
+  has_many :users, through: :favorites
+
+
+
   YELP_CONSUMER_KEY = "6_2-JlBlWrLhxpkGDCKZfA"
   YELP_CONSUMER_SECRET = "iQjeTUp-MR6MAlqMKnUTiEgGEJ4"
   YELP_TOKEN = "wzhKqRw5S7mkd4Ht4b9ekQ9-LMrY3bvp"
