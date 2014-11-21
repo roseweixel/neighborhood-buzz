@@ -24,7 +24,7 @@
       <% end %>
     </ul>
     <div id="navbar" class="navbar-collapse collapse">
-      <%= form_for(@user, :html => {:class => "navbar-form navbar-right", :roll => "form"}) do |f| %>
+      <%= form_for(User.new, :html => {:class => "navbar-form navbar-right", :roll => "form"}) do |f| %>
         <div class="form-group">
           <%= f.text_field :username, placeholder: "username" %>
         </div>
@@ -32,6 +32,12 @@
           <%= f.text_field :email, placeholder: "email address" %>
         </div>
         <%= f.submit "Sign Up", class: "btn btn-success" %>
+      <% end %>
+      <%= form_tag(sessions_path, :class => "navbar-form navbar-right", :roll => "form") do %>
+        <div class="form-group">
+          <input type="text" name="username" placeholder="username" />
+        </div>
+        <input class="btn btn-success" name="commit" type="submit" value="Sign In">
       <% end %>
     </div>
   </nav>
