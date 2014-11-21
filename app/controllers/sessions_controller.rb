@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def create
-    user = User.find_by(username: params[:username])
+    user = User.find_by(slug: sluggify(params[:username]))
     if user
       session[:user_id] = user.id
       redirect_to neighborhoods_path
