@@ -4,7 +4,7 @@
 
   <% if @favorite_id %>
 
-    <%= button_to "Remove Favorite", @favorite, method: :delete, :class => "btn btn-success pull-right"  %>
+    <%= button_to "Remove Favorite", favorite_path(@favorite_id), method: :delete, :class => "btn btn-success pull-right"  %>
 
   <% else %>
 

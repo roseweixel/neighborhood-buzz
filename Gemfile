@@ -65,3 +65,5 @@ gem "json"
 gem "yelp"
 
 gem "twitter"
+
+gem "flickraw"
