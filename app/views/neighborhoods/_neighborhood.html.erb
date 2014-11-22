@@ -1,3 +1,4 @@
-<div>
-<%= neighborhood.name %>, <%= neighborhood.borough %>
+<div class="col-md-4">
+<%= link_to "#{neighborhood.name}, #{neighborhood.borough}", neighborhood_path(neighborhood) %>
+<%= image_tag("https://www.flickr.com/photos/76277389@N00/15789431221") %><br>
 </div>

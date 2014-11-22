@@ -123,4 +123,19 @@ class Neighborhood < ActiveRecord::Base
     end
   end
 
+  def get_flickr
+    api_key="cdbc2d25078495e755c6fd7fd8b6f4dd"
+    shared_secret="294b090c6cbc2c6e"
+    FlickRaw.api_key = api_key
+    FlickRaw.shared_secret = shared_secret
+    flickr_place = flickr.places.find(:query => "#{name}, New York")
+    place_id = flickr_place[0].place_id
+    #binding.pry
+    photo_hash = flickr.photos.search(:text => name, :place_id => place_id, :per_page => '1', :extras => 'url_o')
+    photo_url = photo_hash[0].url_o
+  end
+
 end
+
+
+
