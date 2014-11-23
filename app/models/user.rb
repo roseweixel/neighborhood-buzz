@@ -48,7 +48,6 @@ class User < ActiveRecord::Base
 
   def similar_to_favorites_by_price
     delta = average_price_of_favorites / 20
-    #sorted_hoods = Neighborhood.order(:median_buy_price)
     results = Neighborhood.select{|neighborhood| neighborhood.median_buy_price.between?((average_price_of_favorites - delta), (average_price_of_favorites + delta)) && !self.neighborhoods.include?(neighborhood)}
     results
   end

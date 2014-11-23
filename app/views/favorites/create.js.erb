@@ -1,0 +1,3 @@
+// Make the favorite button change to un-favorite
+// j render to escape javascript
+$('.add-favorite-form').replaceWith('<%= j render :partial => "neighborhoods/remove_favorite_button", :locals => {:favorite_id => @favorite_id} %>');

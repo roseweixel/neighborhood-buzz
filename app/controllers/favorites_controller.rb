@@ -1,15 +1,22 @@
 class FavoritesController < ApplicationController
   def create
-    Favorite.create(favorite_params)
-    redirect_to neighborhood_path(favorite_params[:neighborhood_id])
+    @favorite = Favorite.create(favorite_params)
+    @favorite_id = @favorite.id
+    respond_to do |f|
+      f.js { }
+      f.html { redirect_to neighborhood_path(favorite_params[:neighborhood_id]) }
+    end
   end
 
   def destroy
     @favorite = Favorite.find(params[:id])
-    @neighborhood_id = @favorite.neighborhood_id
+    @neighborhood = @favorite.neighborhood
+    @user = @favorite.user
     @favorite.destroy
-    redirect_to(:back)
-    #redirect_to neighborhood_path(@neighborhood_id)
+    respond_to do |f|
+      f.js { }
+      f.html { redirect_to(:back) }
+    end
   end
 
   private

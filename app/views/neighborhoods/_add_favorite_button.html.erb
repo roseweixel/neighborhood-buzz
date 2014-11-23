@@ -1,0 +1,3 @@
+<% if user.persisted? %>
+	<%= button_to "Add Favorite", favorites_path, params: {"favorite[user_id]" => user.id, "favorite[neighborhood_id]" => neighborhood.id}, :id => "add-favorite-button", :form_class => "add-favorite-form", :class => "btn btn-success pull-right"  %>
+<% end %>
