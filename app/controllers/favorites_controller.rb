@@ -8,7 +8,8 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.find(params[:id])
     @neighborhood_id = @favorite.neighborhood_id
     @favorite.destroy
-    redirect_to neighborhood_path(@neighborhood_id)
+    redirect_to(:back)
+    #redirect_to neighborhood_path(@neighborhood_id)
   end
 
   private

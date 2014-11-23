@@ -140,8 +140,12 @@ class Neighborhood < ActiveRecord::Base
     return nil
   end
 
-  def get_flickr_url
-    FLICKR_PHOTO_URLS[name]
+  def slug
+    name.gsub(" ", "-").downcase
+  end
+
+  def user_favorite_photo_url
+    FLICKR_PHOTO_URLS[name] || "#{slug}.jpg"
   end
 
   def self.get_flickr_place_ids

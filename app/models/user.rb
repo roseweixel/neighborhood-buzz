@@ -16,7 +16,9 @@ class User < ActiveRecord::Base
     User.all.find_by(slug: slug)
   end
 
-
+  def get_favorite_by_neighborhood(neighborhood)
+    favorites.find{|favorite| favorite.neighborhood_id == neighborhood.id}
+  end
   # def logged_in?
   #   if session[:user_id]
   #     return true
