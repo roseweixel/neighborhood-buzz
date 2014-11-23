@@ -9,6 +9,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
+    @current_uri = session.options.instance_variable_get("@env")["HTTP_REFERER"]
     @favorite = Favorite.find(params[:id])
     @neighborhood = @favorite.neighborhood
     @user = @favorite.user

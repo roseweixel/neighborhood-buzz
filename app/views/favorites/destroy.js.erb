@@ -1,1 +1,7 @@
-$('.remove-favorite-form').replaceWith('<%= j render :partial => "neighborhoods/add_favorite_button", :locals => {:user => @user, :neighborhood => @neighborhood} %>');
+<% if @current_uri.include?('neighborhoods') %>
+  $('.remove-favorite-form').replaceWith('<%= j render :partial => "neighborhoods/add_favorite_button", :locals => {:user => @user, :neighborhood => @neighborhood} %>');
+<% else %>
+  $('#neighborhood-<%= @neighborhood.id %>').slideUp();
+  // $('#recommendations-wrapper').replaceWith('<%= j render :partial => "users/recommendations", :locals => {:user => @user} %>');
+<% end %>
+

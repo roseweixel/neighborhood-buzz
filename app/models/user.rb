@@ -22,9 +22,11 @@ class User < ActiveRecord::Base
 
   def average_price_of_favorites
     prices = neighborhoods.map{|neighborhood| neighborhood.median_buy_price}
-    sum = prices.inject(:+)
-    average = sum / prices.size
-    average.round
+    if prices
+      sum = prices.inject(:+)
+      average = sum / prices.size
+      return average.round
+    end
   end
 
   def average_price_string
@@ -47,9 +49,11 @@ class User < ActiveRecord::Base
   end
 
   def similar_to_favorites_by_price
-    delta = average_price_of_favorites / 20
-    results = Neighborhood.select{|neighborhood| neighborhood.median_buy_price.between?((average_price_of_favorites - delta), (average_price_of_favorites + delta)) && !self.neighborhoods.include?(neighborhood)}
-    results
+    if neighborhoods.size > 0
+      delta = average_price_of_favorites / 20
+      results = Neighborhood.select{|neighborhood| neighborhood.median_buy_price.between?((average_price_of_favorites - delta), (average_price_of_favorites + delta)) && !self.neighborhoods.include?(neighborhood)}
+      return results
+    end
   end
 
 
