@@ -1,4 +1,4 @@
 <div class="col-md-4">
-<%= link_to "#{neighborhood.name}, #{neighborhood.borough}", neighborhood_path(neighborhood) %>
-<%= image_tag("https://www.flickr.com/photos/76277389@N00/15789431221") %><br>
+<%= link_to "#{neighborhood.name}, #{neighborhood.borough}", neighborhood_path(neighborhood) %><br>
+<%= image_tag(neighborhood.get_flickr_url, size: "200x200", alt: neighborhood.name) %><br>
 </div>
