@@ -15,13 +15,26 @@
 <div class="row">
 	<div class="col-md-4">
 		<h3>Typical Buying Price: <%= @neighborhood.find_50th_percentile %></h3>
+		<h3>Median Monthly Rent: <%= @noko[:median_rent] %></h3>
 
 
-		<h3>Sample 2 Bedroom Rental:</h3>
+		<h3>New Listings:</h3>
 
-		<p>Monthly Rent: <%= @noko[:monthly_rent] %></p>
-		<%= image_tag("#{@noko[:img_url]}") %><br>
-		<%= link_to("View This Listing", @noko[:listing_url]) %><br>
+		<%= image_tag("#{@noko[:img_url_1]}") %><br>
+		<%= link_to("View This Listing", @noko[:listing_url_1]) %><br>
+		<p>Monthly Rent: <%= @noko[:monthly_rent_1] %></p><br>
+
+
+		<%= image_tag("#{@noko[:img_url_2]}") %><br>
+		<%= link_to("View This Listing", @noko[:listing_url_2]) %><br>
+		<p>Monthly Rent: <%= @noko[:monthly_rent_2] %></p><br>
+
+
+		<%= image_tag("#{@noko[:img_url_3]}") %><br>
+		<%= link_to("View This Listing", @noko[:listing_url_3]) %><br>
+		<p>Monthly Rent: <%= @noko[:monthly_rent_3] %></p>
+
+
 		<%= link_to("More Listings", @noko[:search_url]) %>
 
 	</div>
