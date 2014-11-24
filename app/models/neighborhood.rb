@@ -130,7 +130,8 @@ class Neighborhood < ActiveRecord::Base
   end
 
   def twitterified_name
-    name.gsub(" ", "")
+    new_name = name.gsub(" ", "")
+    # new_name + "nyc"
   end
 
   def get_tweets
@@ -141,7 +142,7 @@ class Neighborhood < ActiveRecord::Base
       config.consumer_secret     = consumer_secret
     end
     tweets = []
-    client.search("##{twitterified_name}").each do |tweet|
+    client.search("##{twitterified_name} #nyc").each do |tweet|
       tweets << tweet
       if tweets.count == 5
         return tweets

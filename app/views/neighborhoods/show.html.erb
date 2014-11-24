@@ -49,7 +49,7 @@
 	<div class="col-md-4">
 		<h3>What People Are Saying About <span class="neighborhood-name"><%= @neighborhood.name %></span></h3>
 		<% @neighborhood.get_tweets.each do |tweet| %>
-			<blockquote class="twitter-tweet" lang="en">
+			<blockquote class="twitter-tweet" lang="en" data-cards="hidden" width=250>
 				<a href="<%= tweet.url %>"></a>
 			</blockquote>
 			<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
