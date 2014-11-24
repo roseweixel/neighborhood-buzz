@@ -108,17 +108,31 @@ class Neighborhood < ActiveRecord::Base
       se_hash = find_se_rentals
       ret_hash = {}
       listings_page = Nokogiri::HTML(open(se_hash[:search_url]))
-      if listings_page.css(".left-two-thirds .photo img").first
-        ret_hash[:img_url] = listings_page.css(".left-two-thirds .photo img").first.attributes["data-original"].value
-      else
-        ret_hash[:img_url] = "app/assets/images/apt-stock-photo-1.jpg"
-      end
-      root_url = "http://streeteasy.com"
-      append_url = listings_page.css(".details-title a").first.attributes["href"].value
-      ret_hash[:listing_url] = root_url + append_url
-      ret_hash[:monthly_rent] = listings_page.css(".price").first.children.text
-      
 
+      if listings_page.css(".left-two-thirds .photo img").first
+        ret_hash[:img_url_1] = listings_page.css(".left-two-thirds .photo img").first.attributes["data-original"].value
+        ret_hash[:img_url_2] = listings_page.css(".left-two-thirds .photo img").first.next.attributes["data-original"].value
+        ret_hash[:img_url_3] = listings_page.css(".left-two-thirds .photo img").first.next.next.attributes["data-original"].value
+      else
+        ret_hash[:img_url_1] = "app/assets/images/apt-stock-photo-1.jpg"
+        ret_hash[:img_url_2] = "app/assets/images/apt-stock-photo-1.jpg"
+        ret_hash[:img_url_3] = "app/assets/images/apt-stock-photo-1.jpg"
+      end
+
+      root_url = "http://streeteasy.com"
+      
+      append_url_1 = listings_page.css(".details-title a").first.attributes["href"].value
+      ret_hash[:listing_url_1] = root_url + append_url_1
+      ret_hash[:monthly_rent_1] = listings_page.css(".price").first.children.text
+
+      append_url_2 = listings_page.css(".details-title a").first.next.attributes["href"].value
+      ret_hash[:listing_url_2] = root_url + append_url_2
+      ret_hash[:monthly_rent_2] = listings_page.css(".price").first.next.children.text
+
+      append_url_3 = listings_page.css(".details-title a").first.next.next.attributes["href"].value
+      ret_hash[:listing_url_3] = root_url + append_url_3
+      ret_hash[:monthly_rent_3] = listings_page.css(".price").first.next.next.children.text
+      
       ret_hash[:search_url] = se_hash[:search_url]
       ret_hash[:median_rent] = se_hash[:median_price]
 
