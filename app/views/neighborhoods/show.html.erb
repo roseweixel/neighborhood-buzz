@@ -1,4 +1,5 @@
 <div class="row">
+
 	<h1 class="col-md-8"><%= @neighborhood.name %></h1>
 	<h1 class="col-md-4">
 
@@ -12,35 +13,32 @@
 
 	</h1>
 </div>
+
 <div class="row">
-	<div class="col-md-4">
+
+	<div class="col-md-3">
 		<h3>Typical Buying Price: <%= @neighborhood.median_buy_price_string %></h3>
 		<h3>Median Monthly Rent: <%= @neighborhood.median_rental_price %></h3>
 
-
 		<h3>New Listings:</h3>
 
-		<%= image_tag("#{@neighborhood.noko_img_url_1}") %><br>
+		<%= image_tag("#{@neighborhood.noko_img_url_1}" ) %><br>
 		<%= link_to("View This Listing", @neighborhood.noko_listing_url_1) %><br>
 		<p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_1 %></p><br>
-
 
 		<%= image_tag("#{@neighborhood.noko_img_url_2}") %><br>
 		<%= link_to("View This Listing", @neighborhood.noko_listing_url_2) %><br>
 		<p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_2 %></p><br>
 
-
 		<%= image_tag("#{@neighborhood.noko_img_url_3}") %><br>
 		<%= link_to("View This Listing", @neighborhood.noko_listing_url_3) %><br>
 		<p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_3 %></p>
 
-
 		<%= link_to("More Listings", @neighborhood.noko_search_url) %>
-
 	</div>
 
-	<div class="col-md-4">
-		<h3>Recommended Bars</h3>
+	<div class="col-md-3">
+		<h3 class="pull-right">Recommended Bars</h3>
 		<ul>
 			<% @neighborhood.bars.each do |bar| %>
 				<h4><%= link_to bar.name, bar.url %></h4>
@@ -48,7 +46,7 @@
 				<%= bar.address %><br>
 			<% end %>
 		</ul>
-		<h3>Recommended Restaurants</h3>
+		<h3 class="pull-right" style="padding-left:35px;">Recommended Restaurants</h3>
 		<ul>
 			<% @neighborhood.restaurants.each do |restaurant| %>
 				<h4><%= link_to restaurant.name, restaurant.url %></h4>
@@ -56,43 +54,36 @@
 				<%= restaurant.address %><br>
 			<% end %>
 		</ul>
-
 	</div>
 
 	<% if @neighborhood.get_tweets %>
-	<div class="col-md-4">
-		<h3>What People Are Saying About <span class="neighborhood-name"><%= @neighborhood.name %></span></h3>
-		<% @neighborhood.get_tweets.each do |tweet| %>
-			<blockquote class="twitter-tweet" lang="en" data-cards="hidden">
-				<a href="<%= tweet.url %>"></a>
-			</blockquote>
-			<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-		<% end %>
-		
-	</div>
+		<div class="col-md-3">
+			<h3>What People Are Saying About <span class="neighborhood-name"><%= @neighborhood.name %></span></h3>
+			<% @neighborhood.get_tweets.each do |tweet| %>
+				<blockquote class="twitter-tweet" lang="en" data-cards="hidden">
+					<a href="<%= tweet.url %>"></a>
+				</blockquote>
+				<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+			<% end %>
+		</div>
 	<% end %>
-</div>
 
-<div class="row">
 	<div class="col-md-3">
-	<% if @user.persisted? && @user.commute_address %>
-		<iframe id="google-map"
-    	frameborder="0" style="border:0"
-    	src="<%=@neighborhood.get_google_directions(@user.commute_address)%>">
-  	</iframe>
-  <% else %>
-  	<div id="map_canvas"></div>
-  <% end %>
+		<% if @user.persisted? && @user.commute_address %>
+			<iframe id="google-map"
+	    	frameborder="0" style="border:0"
+	    	src="<%=@neighborhood.get_google_directions(@user.commute_address)%>">
+	  	</iframe>
+	  <% else %>
+	  	<div id="map_canvas"></div>
+	  <% end %>
 	</div>
+
 </div>
 
-
-	<script type="text/javascript">
-   $(function(){
-     var gmap = new GMap();
-     gmap.codeAddress(gmap.address);
-   });
-	</script>
-
-
-
+<script type="text/javascript">
+  $(function(){
+    var gmap = new GMap();
+    gmap.codeAddress(gmap.address);
+  });
+</script>

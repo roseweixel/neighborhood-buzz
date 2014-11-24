@@ -2,7 +2,7 @@
 <br>
 <div class="row">
 <% @user.neighborhoods.each do |neighborhood| %>
-	<div class="col-md-4" style='padding: 0; background-image: url("<%= image_url(neighborhood.user_favorite_photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
+	<div class="col-md-4" style='padding: 0; background-image: url("<%= image_url(neighborhood.photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
 		<h4 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough}", neighborhood_path(neighborhood) %> <%= link_to "unfavorite", favorite_path(@user.get_favorite_by_neighborhood(neighborhood)), method: :delete, :class => "btn btn-xs btn-primary pull-right" %></h4>
 	</div>
 <% end %>
