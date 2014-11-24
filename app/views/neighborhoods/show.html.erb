@@ -47,7 +47,7 @@
 	</div>
 
 	<div class="col-md-4">
-		<h3>What People Are Saying About <%= @neighborhood.name %></h3>
+		<h3>What People Are Saying About <span class="neighborhood-name"><%= @neighborhood.name %></span></h3>
 		<% @neighborhood.get_tweets.each do |tweet| %>
 			<blockquote class="twitter-tweet" lang="en">
 				<a href="<%= tweet.url %>"></a>
@@ -57,9 +57,15 @@
 		
 	</div>
 
-
+	<div id="map_canvas"></div>
 </div>
 
+<script type="text/javascript">
+  $(function(){
+    var gmap = new GMap();
+    gmap.codeAddress(gmap.address);
+  });
+</script>
 
 
 
