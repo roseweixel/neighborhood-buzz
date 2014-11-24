@@ -14,28 +14,28 @@
 </div>
 <div class="row">
 	<div class="col-md-4">
-		<h3>Typical Buying Price: <%= @neighborhood.find_50th_percentile %></h3>
-		<h3>Median Monthly Rent: <%= @noko[:median_rent] %></h3>
+		<h3>Typical Buying Price: <%= @neighborhood.median_buy_price %></h3>
+		<h3>Median Monthly Rent: <%= @neighborhood.median_rental_price %></h3>
 
 
 		<h3>New Listings:</h3>
 
-		<%= image_tag("#{@noko[:img_url_1]}") %><br>
-		<%= link_to("View This Listing", @noko[:listing_url_1]) %><br>
-		<p>Monthly Rent: <%= @noko[:monthly_rent_1] %></p><br>
+		<%= image_tag("#{@neighborhood.noko_img_url_1}") %><br>
+		<%= link_to("View This Listing", @neighborhood.noko_listing_url_1) %><br>
+		<p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_1 %></p><br>
 
 
-		<%= image_tag("#{@noko[:img_url_2]}") %><br>
-		<%= link_to("View This Listing", @noko[:listing_url_2]) %><br>
-		<p>Monthly Rent: <%= @noko[:monthly_rent_2] %></p><br>
+		<%= image_tag("#{@neighborhood.noko_img_url_2}") %><br>
+		<%= link_to("View This Listing", @neighborhood.noko_listing_url_2) %><br>
+		<p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_2 %></p><br>
 
 
-		<%= image_tag("#{@noko[:img_url_3]}") %><br>
-		<%= link_to("View This Listing", @noko[:listing_url_3]) %><br>
-		<p>Monthly Rent: <%= @noko[:monthly_rent_3] %></p>
+		<%= image_tag("#{@neighborhood.noko_img_url_3}") %><br>
+		<%= link_to("View This Listing", @neighborhood.noko_listing_url_3) %><br>
+		<p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_3 %></p>
 
 
-		<%= link_to("More Listings", @noko[:search_url]) %>
+		<%= link_to("More Listings", @neighborhood.noko_search_url) %>
 
 	</div>
 
