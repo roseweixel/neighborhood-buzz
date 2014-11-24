@@ -32,6 +32,9 @@
         <div class="form-group">
           <%= f.text_field :email, placeholder: "email address" %>
         </div>
+        <div class="form-group">
+          <%= f.text_field :commute_address, placeholder: "where do you work?" %>
+        </div>
         <%= f.submit "Sign Up", class: "btn btn-success" %>
       <% end %>
       <%= form_tag(sessions_path, :class => "navbar-form navbar-right", :roll => "form") do %>

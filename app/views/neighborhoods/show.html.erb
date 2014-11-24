@@ -23,25 +23,25 @@
 		<h3>New Listings:</h3>
 
 		<%= image_tag("#{@neighborhood.noko_img_url_1}" ) %><br>
-		<%= link_to("View This Listing", @neighborhood.noko_listing_url_1) %><br>
+		<%= link_to("View This Listing", @neighborhood.noko_listing_url_1, :target => "_blank") %><br>
 		<p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_1 %></p><br>
 
 		<%= image_tag("#{@neighborhood.noko_img_url_2}") %><br>
-		<%= link_to("View This Listing", @neighborhood.noko_listing_url_2) %><br>
+		<%= link_to("View This Listing", @neighborhood.noko_listing_url_2, :target => "_blank") %><br>
 		<p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_2 %></p><br>
 
 		<%= image_tag("#{@neighborhood.noko_img_url_3}") %><br>
-		<%= link_to("View This Listing", @neighborhood.noko_listing_url_3) %><br>
+		<%= link_to("View This Listing", @neighborhood.noko_listing_url_3, :target => "_blank") %><br>
 		<p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_3 %></p>
 
-		<%= link_to("More Listings", @neighborhood.noko_search_url) %>
+		<%= link_to("More Listings", @neighborhood.noko_search_url, :target => "_blank") %>
 	</div>
 
 	<div class="col-md-3">
 		<h3 class="pull-right">Recommended Bars</h3>
 		<ul>
 			<% @neighborhood.bars.each do |bar| %>
-				<h4><%= link_to bar.name, bar.url %></h4>
+				<h4><%= link_to bar.name, bar.url, :target => "_blank" %></h4>
 				<%= image_tag("#{bar.stars_img}", height: "15", width: "75") %><br>
 				<%= bar.address %><br>
 			<% end %>
@@ -49,7 +49,7 @@
 		<h3 class="pull-right" style="padding-left:35px;">Recommended Restaurants</h3>
 		<ul>
 			<% @neighborhood.restaurants.each do |restaurant| %>
-				<h4><%= link_to restaurant.name, restaurant.url %></h4>
+				<h4><%= link_to restaurant.name, restaurant.url, :target => "_blank" %></h4>
 				<%= image_tag("#{restaurant.stars_img}", height: "15", width: "75") %><br>
 				<%= restaurant.address %><br>
 			<% end %>

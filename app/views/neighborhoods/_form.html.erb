@@ -1,5 +1,6 @@
 <%= form_for(@user) do |f| %>
   <%= f.text_field :username, placeholder: "username" %>
   <%= f.text_field :email, placeholder: "email address" %>
+  <%= f.text_field :commute_address, placeholder: "where do you work?" %>
   <%= f.submit "Sign Up" %>
 <% end %>
