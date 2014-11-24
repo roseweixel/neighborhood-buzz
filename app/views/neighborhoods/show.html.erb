@@ -42,18 +42,18 @@
 	<div class="col-md-4">
 		<h3>Recommended Bars</h3>
 		<ul>
-			<% @neighborhood.get_yelp_top_three_bars.each do |bar| %>
-				<h4><%= link_to bar[:name], bar[:url] %></h4>
-				<%= image_tag("#{bar[:stars_img]}", height: "15", width: "75") %><br>
-				<%= bar[:address] %><br>
+			<% @neighborhood.bars.each do |bar| %>
+				<h4><%= link_to bar.name, bar.url %></h4>
+				<%= image_tag("#{bar.stars_img}", height: "15", width: "75") %><br>
+				<%= bar.address %><br>
 			<% end %>
 		</ul>
 		<h3>Recommended Restaurants</h3>
 		<ul>
-			<% @neighborhood.get_yelp_top_three_restaurants.each do |restaurant| %>
-				<h4><%= link_to restaurant[:name], restaurant[:url] %></h4>
-				<%= image_tag("#{restaurant[:stars_img]}", height: "15", width: "75") %><br>
-				<%= restaurant[:address] %><br>
+			<% @neighborhood.restaurants.each do |restaurant| %>
+				<h4><%= link_to restaurant.name, restaurant.url %></h4>
+				<%= image_tag("#{restaurant.stars_img}", height: "15", width: "75") %><br>
+				<%= restaurant.address %><br>
 			<% end %>
 		</ul>
 

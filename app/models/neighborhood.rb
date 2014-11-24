@@ -5,7 +5,8 @@ require 'flickr.rb'
 class Neighborhood < ActiveRecord::Base
   has_many :favorites
   has_many :users, through: :favorites
-
+  has_many :restaurants
+  has_many :bars
 
   
 

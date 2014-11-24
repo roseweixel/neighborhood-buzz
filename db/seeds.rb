@@ -127,6 +127,8 @@ class SeedDatabase
   def initialize
     create_users
     create_neighborhoods
+    create_restaurants
+    create_bars
     add_photo_url_to_neighborhoods
     add_median_buy_price_to_neighborhoods
     add_noko_listing_attributes_to_neighborhoods
@@ -306,4 +308,24 @@ class SeedDatabase
     end
   end
 
+  def create_restaurants
+    Neighborhood.all.each do |neighborhood|
+      restaurants = neighborhood.get_yelp_top_three_restaurants
+      restaurants.each do |restaurant|
+        neighborhood.restaurants.create(name: restaurant[:name], url: restaurant[:url], stars_img: restaurant[:stars_img], address: restaurant[:address])
+      end
+    end
+  end
+
+  def create_bars
+    Neighborhood.all.each do |neighborhood|
+      bars = neighborhood.get_yelp_top_three_bars
+      bars.each do |bar|
+        neighborhood.bars.create(name: bar[:name], url: bar[:url], stars_img: bar[:stars_img], address: bar[:address])
+      end
+    end
+  end
+
 end
+
+SeedDatabase.new
