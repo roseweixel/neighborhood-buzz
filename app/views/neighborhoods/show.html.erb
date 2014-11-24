@@ -62,7 +62,7 @@
 <div class="row">
 	<div class="col-md-3">
 	<% if @user.persisted? && @user.commute_address %>
-		<iframe id="google-map">
+		<iframe id="google-map"
     	frameborder="0" style="border:0"
     	src="<%=@neighborhood.get_google_directions(@user.commute_address)%>">
   	</iframe>

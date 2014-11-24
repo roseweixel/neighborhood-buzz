@@ -58,6 +58,8 @@ group :production do
   gem "rails_12factor"
 end
 
+gem "figaro"
+
 gem "bootstrap-sass", "~> 3.1.1"
 
 gem "json"
