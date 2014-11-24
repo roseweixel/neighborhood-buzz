@@ -125,10 +125,10 @@ class SeedDatabase
   "Windsor Terrace"=>"https://farm6.staticflickr.com/5598/15564880711_b7e602a738_o.jpg"
 }
   def initialize
-    create_users
-    create_neighborhoods
-    create_restaurants
-    create_bars
+    # create_users
+    # create_neighborhoods
+    # create_restaurants
+    # create_bars
     add_photo_url_to_neighborhoods
     add_median_buy_price_to_neighborhoods
     add_noko_listing_attributes_to_neighborhoods
@@ -159,7 +159,6 @@ class SeedDatabase
       {borough: "Manhattan", name: "Gramercy"},
       {borough: "Manhattan", name: "Hamilton Heights"},
       {borough: "Manhattan", name: "Harlem"},
-      {borough: "Manhattan", name: "Hudson Heights"},
       {borough: "Manhattan", name: "Inwood"},
       {borough: "Manhattan", name: "Kips Bay"},
       {borough: "Manhattan", name: "Lower East Side"},
@@ -175,7 +174,6 @@ class SeedDatabase
       {borough: "Manhattan", name: "Union Square"},
       {borough: "Manhattan", name: "Upper East Side"},
       {borough: "Manhattan", name: "Upper West Side"},
-      {borough: "Manhattan", name: "Village"},
       {borough: "Manhattan", name: "Washington Heights"},
       {borough: "Manhattan", name: "West Village"}
     ])
@@ -183,11 +181,9 @@ class SeedDatabase
 
   def create_brooklyn_neighborhoods
     Neighborhood.create([
-      {borough: "Brooklyn", name: "Bath Beach"},
       {borough: "Brooklyn", name: "Bay Ridge"},
       {borough: "Brooklyn", name: "Bedford Stuyvesant"},
       {borough: "Brooklyn", name: "Bensonhurst"},
-      {borough: "Brooklyn", name: "Bergen Beach"},
       {borough: "Brooklyn", name: "Boerum Hill"},
       {borough: "Brooklyn", name: "Borough Park"},
       {borough: "Brooklyn", name: "Brighton Beach"},
@@ -205,7 +201,6 @@ class SeedDatabase
       {borough: "Brooklyn", name: "Dyker Heights"},
       {borough: "Brooklyn", name: "East New York"},
       {borough: "Brooklyn", name: "Flatbush"},
-      {borough: "Brooklyn", name: "Flatlands"},
       {borough: "Brooklyn", name: "Fort Greene"},
       {borough: "Brooklyn", name: "Fort Hamilton"},
       {borough: "Brooklyn", name: "Gravesend"},
@@ -213,7 +208,6 @@ class SeedDatabase
       {borough: "Brooklyn", name: "Kensington"},
       {borough: "Brooklyn", name: "Manhattan Beach"},
       {borough: "Brooklyn", name: "Midwood"},
-      {borough: "Brooklyn", name: "Mill Basin"},
       {borough: "Brooklyn", name: "Ocean Hill"},
       {borough: "Brooklyn", name: "Park Slope"},
       {borough: "Brooklyn", name: "Prospect Heights"},
@@ -236,7 +230,6 @@ class SeedDatabase
       {borough: "Queens", name: "College Point"},
       {borough: "Queens", name: "Corona"},
       {borough: "Queens", name: "Douglaston"},
-      {borough: "Queens", name: "East Elmhurst"},
       {borough: "Queens", name: "Elmhurst"},
       {borough: "Queens", name: "Far Rockaway"},
       {borough: "Queens", name: "Floral Park"},
@@ -260,7 +253,6 @@ class SeedDatabase
       {borough: "Queens", name: "Rego Park"},
       {borough: "Queens", name: "Richmond Hill"},
       {borough: "Queens", name: "Ridgewood"},
-      {borough: "Queens", name: "South Jamaica"},
       {borough: "Queens", name: "St. Albans"},
       {borough: "Queens", name: "Sunnyside"},
       {borough: "Queens", name: "Utopia"},
@@ -289,20 +281,20 @@ class SeedDatabase
     Neighborhood.all.each do |neighborhood|
       noko_listing = neighborhood.noko_listing
       neighborhood.update(
-        median_rental_price: noko_listing[:median_rent]
-        median_rental_price_integer: noko_listing[:median_rent_integer]
-        noko_search_url: noko_listing[:search_url]
+        median_rental_price: noko_listing[:median_rent],
+        median_rental_price_integer: noko_listing[:median_rent_integer],
+        noko_search_url: noko_listing[:search_url],
         
-        noko_img_url_1: noko_listing[:img_url_1]
-        noko_img_url_2: noko_listing[:img_url_2]
-        noko_img_url_3: noko_listing[:img_url_3]
+        noko_img_url_1: noko_listing[:img_url_1],
+        noko_img_url_2: noko_listing[:img_url_2],
+        noko_img_url_3: noko_listing[:img_url_3],
 
-        noko_listing_url_1: noko_listing[:listing_url_1]
-        noko_listing_url_2: noko_listing[:listing_url_2]
-        noko_listing_url_3: noko_listing[:listing_url_3]
+        noko_listing_url_1: noko_listing[:listing_url_1],
+        noko_listing_url_2: noko_listing[:listing_url_2],
+        noko_listing_url_3: noko_listing[:listing_url_3],
 
-        noko_monthly_rent_1: noko_listing[:monthly_rent_1]
-        noko_monthly_rent_2: noko_listing[:monthly_rent_2]
+        noko_monthly_rent_1: noko_listing[:monthly_rent_1],
+        noko_monthly_rent_2: noko_listing[:monthly_rent_2],
         noko_monthly_rent_3: noko_listing[:monthly_rent_3]
         )
     end
