@@ -110,33 +110,54 @@ class Neighborhood < ActiveRecord::Base
       listings_page = Nokogiri::HTML(open(se_hash[:search_url]))
 
       if listings_page.css(".left-two-thirds .photo img").first
-        ret_hash[:img_url_1] = listings_page.css(".left-two-thirds .photo img").first.attributes["data-original"].value
-        ret_hash[:img_url_2] = listings_page.css(".left-two-thirds .photo img").first.next.attributes["data-original"].value
-        ret_hash[:img_url_3] = listings_page.css(".left-two-thirds .photo img").first.next.next.attributes["data-original"].value
+        ret_hash[:img_url_1] = listings_page.css(".left-two-thirds .photo img")[2].attributes["data-original"].value
+        ret_hash[:img_url_2] = listings_page.css(".left-two-thirds .photo img")[3].attributes["data-original"].value
+        ret_hash[:img_url_3] = listings_page.css(".left-two-thirds .photo img")[4].attributes["data-original"].value
       else
         ret_hash[:img_url_1] = "app/assets/images/apt-stock-photo-1.jpg"
-        ret_hash[:img_url_2] = "app/assets/images/apt-stock-photo-1.jpg"
-        ret_hash[:img_url_3] = "app/assets/images/apt-stock-photo-1.jpg"
+        ret_hash[:img_url_2] = "app/assets/images/apt-stock-photo-2.jpg"
+        ret_hash[:img_url_3] = "app/assets/images/apt-stock-photo-3.jpg"
       end
 
       root_url = "http://streeteasy.com"
-      
-      append_url_1 = listings_page.css(".details-title a").first.attributes["href"].value
+        
+      # was janky to get nokogiri to pull links and images from same listing, hence the seemingly random array values  
+
+      append_url_1 = listings_page.css(".details-title a")[4].attributes["href"].value
       ret_hash[:listing_url_1] = root_url + append_url_1
-      ret_hash[:monthly_rent_1] = listings_page.css(".price").first.children.text
+      ret_hash[:monthly_rent_1] = listings_page.css(".price")[2].children.text
 
-      append_url_2 = listings_page.css(".details-title a").first.next.attributes["href"].value
+      append_url_2 = listings_page.css(".details-title a")[6].attributes["href"].value
       ret_hash[:listing_url_2] = root_url + append_url_2
-      ret_hash[:monthly_rent_2] = listings_page.css(".price").first.next.children.text
+      ret_hash[:monthly_rent_2] = listings_page.css(".price")[3].children.text
 
-      append_url_3 = listings_page.css(".details-title a").first.next.next.attributes["href"].value
+      append_url_3 = listings_page.css(".details-title a")[8].attributes["href"].value
       ret_hash[:listing_url_3] = root_url + append_url_3
-      ret_hash[:monthly_rent_3] = listings_page.css(".price").first.next.next.children.text
+      ret_hash[:monthly_rent_3] = listings_page.css(".price")[4].children.text
       
       ret_hash[:search_url] = se_hash[:search_url]
-      ret_hash[:median_rent] = se_hash[:median_price]
+      ret_hash[:median_rent] = prettify_median_price(se_hash[:median_price])
 
       ret_hash
+  end
+
+  def prettify_median_price(price)
+    formatted_string = "$"
+    formatted_array = []
+    unformatted_string = price.to_s
+    #binding.pry
+    string_array = unformatted_string.split("")
+    while string_array.length >= 4
+      3.times do
+        formatted_array.unshift(string_array.pop)
+      end
+      formatted_array.unshift(",")
+    end
+    while string_array.length > 0
+      formatted_array.unshift(string_array.pop)
+    end
+    formatted_string << (formatted_array.join)
+    formatted_string
   end
 
   def twitterified_name
