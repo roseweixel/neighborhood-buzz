@@ -3,8 +3,32 @@ misnamed:
 Murray Hill
 
 bad user show "favorite" photo:
-upper west side
-gramercy
+Upper West Side
+Gramercy
 
-other issues:
+no tweets:
+Windsor Terrace
+Prospect Lefferts Gardens
 
+noko_listing :img_url problem:
+Sunset Park
+starrett-city
+sheepshead-bay
+red-hook
+prospect-heights
+ocean-hill
+mill-basin
+midwood
+manhattan-beach
+kensington
+gravesend
+fort-hamilton
+flatlands
+flatbush
+east-new-york
+dyker-heights
+coney-island
+
+No streeteasy neighborhood name:
+Spring Creek
+Navy Yard

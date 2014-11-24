@@ -97,7 +97,7 @@ class Neighborhood < ActiveRecord::Base
 
  
   def find_se_rentals
-      url = "http://streeteasy.com/nyc/api/rentals/data?criteria=area:#{urlified_name}-#{borough}\|new_developments:yes&key=#{ENV["SE_API_KEY"]}&format=json"
+      url = "http://streeteasy.com/nyc/api/rentals/data?criteria=area:#{urlified_name}-#{borough}\|new_developments:no&key=#{ENV["SE_API_KEY"]}&format=json"
       encoded_url = URI.encode(url)
       info_hash = JSON.load(open(encoded_url))
 
@@ -108,7 +108,11 @@ class Neighborhood < ActiveRecord::Base
       se_hash = find_se_rentals
       ret_hash = {}
       listings_page = Nokogiri::HTML(open(se_hash[:search_url]))
-      ret_hash[:img_url] = listings_page.css(".left-two-thirds .photo img").first.attributes["data-original"].value
+      if listings_page.css(".left-two-thirds .photo img").first
+        ret_hash[:img_url] = listings_page.css(".left-two-thirds .photo img").first.attributes["data-original"].value
+      else
+        ret_hash[:img_url] = "app/assets/images/apt-stock-photo-1.jpg"
+      end
       root_url = "http://streeteasy.com"
       append_url = listings_page.css(".details-title a").first.attributes["href"].value
       ret_hash[:listing_url] = root_url + append_url
