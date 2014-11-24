@@ -7,27 +7,26 @@ Upper West Side
 Gramercy
 
 no tweets:
+Brooklyn
 Windsor Terrace
 Prospect Lefferts Gardens
+Borough Park
+
+Queens
+Richmond Hill
+Queens Village
+Ozone Park
 
 noko_listing :img_url problem:
 
 starrett-city
-
-prospect-heights
-ocean-hill
-mill-basin
-midwood
-manhattan-beach
-kensington
-gravesend
-fort-hamilton
-flatlands
-flatbush
-east-new-york
-dyker-heights
-coney-island
-
-No streeteasy neighborhood name:
-Spring Creek
 Navy Yard
+
+
+No streeteasy neighborhood name or no listings:
+Spring Creek
+springfield-gardens
+JFK airport
+south ozone park
+rosedale
+rockaway-park

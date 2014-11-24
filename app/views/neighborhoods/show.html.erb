@@ -14,51 +14,52 @@
 </div>
 <div class="row">
 	<div class="col-md-4">
-		<h3>Typical Buying Price: <%= @neighborhood.find_50th_percentile %></h3>
-		<h3>Median Monthly Rent: <%= @noko[:median_rent] %></h3>
+		<h3>Typical Buying Price: <%= @neighborhood.median_buy_price %></h3>
+		<h3>Median Monthly Rent: <%= @neighborhood.median_rental_price %></h3>
 
 
 		<h3>New Listings:</h3>
 
-		<%= image_tag("#{@noko[:img_url_1]}") %><br>
-		<%= link_to("View This Listing", @noko[:listing_url_1]) %><br>
-		<p>Monthly Rent: <%= @noko[:monthly_rent_1] %></p><br>
+		<%= image_tag("#{@neighborhood.noko_img_url_1}") %><br>
+		<%= link_to("View This Listing", @neighborhood.noko_listing_url_1) %><br>
+		<p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_1 %></p><br>
 
 
-		<%= image_tag("#{@noko[:img_url_2]}") %><br>
-		<%= link_to("View This Listing", @noko[:listing_url_2]) %><br>
-		<p>Monthly Rent: <%= @noko[:monthly_rent_2] %></p><br>
+		<%= image_tag("#{@neighborhood.noko_img_url_2}") %><br>
+		<%= link_to("View This Listing", @neighborhood.noko_listing_url_2) %><br>
+		<p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_2 %></p><br>
 
 
-		<%= image_tag("#{@noko[:img_url_3]}") %><br>
-		<%= link_to("View This Listing", @noko[:listing_url_3]) %><br>
-		<p>Monthly Rent: <%= @noko[:monthly_rent_3] %></p>
+		<%= image_tag("#{@neighborhood.noko_img_url_3}") %><br>
+		<%= link_to("View This Listing", @neighborhood.noko_listing_url_3) %><br>
+		<p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_3 %></p>
 
 
-		<%= link_to("More Listings", @noko[:search_url]) %>
+		<%= link_to("More Listings", @neighborhood.noko_search_url) %>
 
 	</div>
 
 	<div class="col-md-4">
 		<h3>Recommended Bars</h3>
 		<ul>
-			<% @neighborhood.get_yelp_top_three_bars.each do |bar| %>
-				<h4><%= link_to bar[:name], bar[:url] %></h4>
-				<%= image_tag("#{bar[:stars_img]}", height: "15", width: "75") %><br>
-				<%= bar[:address] %><br>
+			<% @neighborhood.bars.each do |bar| %>
+				<h4><%= link_to bar.name, bar.url %></h4>
+				<%= image_tag("#{bar.stars_img}", height: "15", width: "75") %><br>
+				<%= bar.address %><br>
 			<% end %>
 		</ul>
 		<h3>Recommended Restaurants</h3>
 		<ul>
-			<% @neighborhood.get_yelp_top_three_restaurants.each do |restaurant| %>
-				<h4><%= link_to restaurant[:name], restaurant[:url] %></h4>
-				<%= image_tag("#{restaurant[:stars_img]}", height: "15", width: "75") %><br>
-				<%= restaurant[:address] %><br>
+			<% @neighborhood.restaurants.each do |restaurant| %>
+				<h4><%= link_to restaurant.name, restaurant.url %></h4>
+				<%= image_tag("#{restaurant.stars_img}", height: "15", width: "75") %><br>
+				<%= restaurant.address %><br>
 			<% end %>
 		</ul>
 
 	</div>
 
+	<% if @neighborhood.get_tweets %>
 	<div class="col-md-4">
 		<h3>What People Are Saying About <span class="neighborhood-name"><%= @neighborhood.name %></span></h3>
 		<% @neighborhood.get_tweets.each do |tweet| %>
@@ -69,7 +70,7 @@
 		<% end %>
 		
 	</div>
-
+	<% end %>
 </div>
 
 <div class="row">

@@ -13,7 +13,6 @@ class NeighborhoodsController < ApplicationController
 
     def show
         @neighborhood = Neighborhood.find(params[:id])
-        @noko = @neighborhood.noko_listing
         @favorite_id = nil
 
         if session[:user_id]
