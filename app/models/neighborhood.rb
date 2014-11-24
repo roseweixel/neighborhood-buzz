@@ -117,7 +117,11 @@ class Neighborhood < ActiveRecord::Base
       append_url = listings_page.css(".details-title a").first.attributes["href"].value
       ret_hash[:listing_url] = root_url + append_url
       ret_hash[:monthly_rent] = listings_page.css(".price").first.children.text
+      
+
       ret_hash[:search_url] = se_hash[:search_url]
+      ret_hash[:median_rent] = se_hash[:median_price]
+
       ret_hash
   end
 
