@@ -1,6 +1,0 @@
-Key:
-cdbc2d25078495e755c6fd7fd8b6f4dd
-
-Secret:
-294b090c6cbc2c6e
-

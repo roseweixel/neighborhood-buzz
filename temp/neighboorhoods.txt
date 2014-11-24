@@ -1,6 +1,6 @@
 ### Manhattan
 
-http://api.nytimes.com/svc/real-estate/v2/neighborhoods.json?borough=Manhattan&api-key=019d22d7db27f8ef0242efc21d8d645e%3A19%3A70210388 
+http://api.nytimes.com/svc/real-estate/v2/neighborhoods.json?borough=Manhattan&api-key=
 
 {"status":"OK","copyright":"Copyright (c) 2014 The New York Times Company.  All Rights Reserved.","results":{"neighborhoods":[
 {"borough":"Manhattan","neighborhood":"Battery Park City"},
@@ -40,7 +40,7 @@ http://api.nytimes.com/svc/real-estate/v2/neighborhoods.json?borough=Manhattan&a
 
 ### Queens
 
-http://api.nytimes.com/svc/real-estate/v2/neighborhoods.json?borough=Queens&api-key=019d22d7db27f8ef0242efc21d8d645e%3A19%3A70210388 
+http://api.nytimes.com/svc/real-estate/v2/neighborhoods.json?borough=Queens&api-key= 
 
 {"status":"OK","copyright":"Copyright (c) 2014 The New York Times Company.  All Rights Reserved.","results":{"neighborhoods":[
 {"borough":"Queens","neighborhood":"Arverne"},
@@ -96,7 +96,7 @@ http://api.nytimes.com/svc/real-estate/v2/neighborhoods.json?borough=Queens&api-
 
 ### Brooklyn
 
-http://api.nytimes.com/svc/real-estate/v2/neighborhoods.json?borough=Brooklyn&api-key=019d22d7db27f8ef0242efc21d8d645e%3A19%3A70210388 
+http://api.nytimes.com/svc/real-estate/v2/neighborhoods.json?borough=Brooklyn&api-key=
 
 {"status":"OK","copyright":"Copyright (c) 2014 The New York Times Company.  All Rights Reserved.","results":{"neighborhoods":[
 {"borough":"Brooklyn","neighborhood":"Bath Beach"},
@@ -148,4 +148,4 @@ http://api.nytimes.com/svc/real-estate/v2/neighborhoods.json?borough=Brooklyn&ap
 
 
 ### url for getting neighborhood listings percentile
-http://api.nytimes.com/svc/real-estate/v2/listings/percentile/50.json?date-range=2014-10&geo-extent-level=neighborhood&geo-extent-value=lower+east+side&api-key=019d22d7db27f8ef0242efc21d8d645e%3A19%3A70210388 
+http://api.nytimes.com/svc/real-estate/v2/listings/percentile/50.json?date-range=2014-10&geo-extent-level=neighborhood&geo-extent-value=lower+east+side&api-key=

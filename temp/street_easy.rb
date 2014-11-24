@@ -1,3 +1,0 @@
-# Street Easy
-
-SE_API_KEY = "a4e83294da970c9775f1b4e35dbbe1f87299c242"
