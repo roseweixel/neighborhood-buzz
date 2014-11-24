@@ -97,7 +97,7 @@ class Neighborhood < ActiveRecord::Base
 
  
   def find_se_rentals
-      url = "http://streeteasy.com/nyc/api/rentals/data?criteria=area:#{urlified_name}-#{borough}\|new_developments:no&key=#{ENV["SE_API_KEY"]}&format=json"
+      url = "http://streeteasy.com/nyc/api/rentals/data?criteria=area:#{urlified_name}-#{borough}\|&key=#{ENV["SE_API_KEY"]}&format=json"
       encoded_url = URI.encode(url)
       info_hash = JSON.load(open(encoded_url))
 

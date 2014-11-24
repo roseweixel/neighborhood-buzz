@@ -11,10 +11,9 @@ Windsor Terrace
 Prospect Lefferts Gardens
 
 noko_listing :img_url problem:
-Sunset Park
+
 starrett-city
-sheepshead-bay
-red-hook
+
 prospect-heights
 ocean-hill
 mill-basin
