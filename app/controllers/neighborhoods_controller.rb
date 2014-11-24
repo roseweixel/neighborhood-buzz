@@ -1,6 +1,8 @@
 class NeighborhoodsController < ApplicationController
     def index
-        @neighborhoods = Neighborhood.all
+        @manhattan_neighborhoods = Neighborhood.where(borough: "Manhattan")
+        @brooklyn_neighborhoods = Neighborhood.where(borough: "Brooklyn")
+        @queens_neighborhoods = Neighborhood.where(borough: "Queens")
         @neighborhood = Neighborhood.new
         if session[:user_id]
             @user = User.find(session[:user_id])
