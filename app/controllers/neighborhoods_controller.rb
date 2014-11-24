@@ -19,7 +19,7 @@ class NeighborhoodsController < ApplicationController
             @user = User.find(session[:user_id])
             @user.favorites.each do |favorite|
                @favorite_id = favorite.id if favorite.neighborhood_id == @neighborhood.id
-            end
+           end
         else
             @user = User.new
         end

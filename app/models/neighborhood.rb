@@ -28,6 +28,8 @@ class Neighborhood < ActiveRecord::Base
 
   SE_API_KEY = "a4e83294da970c9775f1b4e35dbbe1f87299c242"
 
+  GMAPS_API_KEY = "AIzaSyBhfTB3RhPILdH4bQREQBQtMEixEltLZyY"
+
   def urlified_name
     name.gsub(" ", "+")
   end
@@ -222,6 +224,14 @@ class Neighborhood < ActiveRecord::Base
   def self.get_neighborhoods_without_photos
     FLICKR_PHOTO_URLS.select{|name, url| url == nil}.keys
   end
+
+
+  def get_google_directions(commute_address)
+    origin = urlified_name + ",NY"
+    destination = commute_address.gsub(" ", "+") + ",NY"
+    url = "https://www.google.com/maps/embed/v1/directions?key=#{GMAPS_API_KEY}&origin=#{origin}&destination=#{destination}&mode=transit"
+  end
+
 
 end
 
