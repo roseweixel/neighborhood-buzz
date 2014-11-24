@@ -125,10 +125,10 @@ class SeedDatabase
   "Windsor Terrace"=>"https://farm6.staticflickr.com/5598/15564880711_b7e602a738_o.jpg"
 }
   def initialize
-    # create_users
-    # create_neighborhoods
-    # create_restaurants
-    # create_bars
+    create_users
+    create_neighborhoods
+    create_restaurants
+    create_bars
     add_photo_url_to_neighborhoods
     add_median_buy_price_to_neighborhoods
     add_noko_listing_attributes_to_neighborhoods
@@ -206,7 +206,6 @@ class SeedDatabase
       {borough: "Brooklyn", name: "Gravesend"},
       {borough: "Brooklyn", name: "Greenpoint"},
       {borough: "Brooklyn", name: "Kensington"},
-      {borough: "Brooklyn", name: "Manhattan Beach"},
       {borough: "Brooklyn", name: "Midwood"},
       {borough: "Brooklyn", name: "Ocean Hill"},
       {borough: "Brooklyn", name: "Park Slope"},

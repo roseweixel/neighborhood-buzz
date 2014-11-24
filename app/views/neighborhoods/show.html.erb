@@ -59,6 +59,7 @@
 
 	</div>
 
+	<% if @neighborhood.get_tweets %>
 	<div class="col-md-4">
 		<h3>What People Are Saying About <span class="neighborhood-name"><%= @neighborhood.name %></span></h3>
 		<% @neighborhood.get_tweets.each do |tweet| %>
@@ -69,7 +70,7 @@
 		<% end %>
 		
 	</div>
-
+	<% end %>
 </div>
 
 <div class="row">

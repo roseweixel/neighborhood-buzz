@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124182725) do
+ActiveRecord::Schema.define(version: 20141124184903) do
 
   create_table "bars", force: true do |t|
     t.integer  "neighborhood_id"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20141124182725) do
     t.string   "noko_monthly_rent_1"
     t.string   "noko_monthly_rent_2"
     t.string   "noko_monthly_rent_3"
+    t.string   "photo_url"
   end
 
   create_table "restaurants", force: true do |t|
