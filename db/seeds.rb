@@ -129,7 +129,7 @@ class SeedDatabase
     create_neighborhoods
     add_photo_url_to_neighborhoods
     add_median_buy_price_to_neighborhoods
-    add_median_rental_price_to_neighborhoods
+    add_noko_listing_attributes_to_neighborhoods
   end
 
   def create_users
@@ -280,6 +280,29 @@ class SeedDatabase
       money_string = neighborhood.find_50th_percentile
       median_buy_price = money_string.gsub(/[$,]/, "").to_i
       neighborhood.update(median_buy_price: median_buy_price)
+    end
+  end
+
+  def add_noko_listing_attributes_to_neighborhoods
+    Neighborhood.all.each do |neighborhood|
+      noko_listing = neighborhood.noko_listing
+      neighborhood.update(
+        median_rental_price: noko_listing[:median_rent]
+        median_rental_price_integer: noko_listing[:median_rent_integer]
+        noko_search_url: noko_listing[:search_url]
+        
+        noko_img_url_1: noko_listing[:img_url_1]
+        noko_img_url_2: noko_listing[:img_url_2]
+        noko_img_url_3: noko_listing[:img_url_3]
+
+        noko_listing_url_1: noko_listing[:listing_url_1]
+        noko_listing_url_2: noko_listing[:listing_url_2]
+        noko_listing_url_3: noko_listing[:listing_url_3]
+
+        noko_monthly_rent_1: noko_listing[:monthly_rent_1]
+        noko_monthly_rent_2: noko_listing[:monthly_rent_2]
+        noko_monthly_rent_3: noko_listing[:monthly_rent_3]
+        )
     end
   end
 

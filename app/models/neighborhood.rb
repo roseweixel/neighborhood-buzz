@@ -137,9 +137,10 @@ class Neighborhood < ActiveRecord::Base
       
       ret_hash[:search_url] = se_hash[:search_url]
       ret_hash[:median_rent] = prettify_median_price(se_hash[:median_price])
-
+      ret_hash[:median_rent_integer] = se_hash[:median_price]
       ret_hash
   end
+
 
   def prettify_median_price(price)
     formatted_string = "$"
