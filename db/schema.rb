@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124200557) do
+ActiveRecord::Schema.define(version: 20141125035310) do
 
   create_table "bars", force: true do |t|
     t.integer  "neighborhood_id"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20141124200557) do
     t.datetime "updated_at"
     t.string   "slug"
     t.string   "commute_address"
+    t.string   "commute_city"
   end
 
 end

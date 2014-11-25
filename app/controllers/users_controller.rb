@@ -23,8 +23,32 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+    @user = User.find(params[:id])
+    if @user.commute_address
+      @commute_place = @user.commute_address
+      @address_value = :value
+    else
+      @commute_place = "e.g. 11 Broadway"
+      @commute_value = :placeholder
+    end
+    if @user.commute_city
+      @city = @user.commute_city
+      @city_value = :value
+    else
+      @city = "e.g. New York"
+      @city_value = :placeholder
+    end
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to neighborhoods_path
+  end
+
   private
     def user_params
-      params.require(:user).permit(:username, :email, :commute_address)
+      params.require(:user).permit(:username, :email, :commute_address, :commute_city)
     end
 end
