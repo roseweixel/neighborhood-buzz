@@ -9,7 +9,7 @@
   <script src="https://maps.googleapis.com/maps/api/js"></script>
 </head>
 <body>
-  <nav class="nav navbar-inverse navbar-fixed-top" roll="navigation">
+	<nav class="nav navbar-inverse navbar-fixed-top" roll="navigation">
     <div class="navbar-header">
       <%= link_to("Neighborhood Buzz", neighborhoods_path, class: "navbar-brand") %>
     </div>
@@ -52,15 +52,15 @@
 
 
 
-
+  <div class="container">
 
     <div id="alert">
         <% if flash[:notice] %>
            <div class="alert alert-warning"><%= flash[:notice] %></div>
         <% end %>
     </div>
-    <%= yield %>
+		<%= yield %>
 
-
+	</div>
 </body>
 </html>
