@@ -1,25 +1,7 @@
 <div class="row" style="margin-top: 50px;">
 
-  <div class="col-lg-4 animaze fromBottom">
-       <div class="cprofile">
-            <div class="lightbox-item">
-                <img src="images/about-us-avatar-2.jpg" alt="Project Name 2">
-                   <div class="lightbox-item-overlay-content"><a class="preview popup" href="images/about-us-avatar-2.jpg" data-fancybox-group="pf-gallery" title="Your Name"><i class="icon-search"></i></a><a class="permalink" href="mailto:email@email.com" target="_blank"><i class="icon-envelope-alt"></i></a>
-                   </div>
-              </div>
-              <h3>John Doe</h3>
-              <span>Manager/CEO</span>
-              <p>Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum</p>
-              <a href="javascript:;"><i class="icon-facebook icon-mini"></i></a>
-              <a href="javascript:;"><i class="icon-twitter icon-mini"></i></a>
-          </div>
-      </div>
-
-
-
-
 	<h1 class="col-md-8"><%= @neighborhood.name %></h1>
-	<h1 class="col-lg-4 animaze fromBottom">
+	<h1 class="col-lg-4  fromBottom">
 
 	<div class="cprofile">
      <div class="lightbox-item">
@@ -35,6 +17,63 @@
 </div>
 
 <div class="row">
+  <div class="team">
+            <div class="container">
+                <div class="wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 ">
+                            <div class="title text-center">
+                                <h1>STAFF TEAM</h1>
+                                <hr/>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit.
+                            </p>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="cprofile">
+                                        <div class="lightbox-item">
+                                            <img src="../images/about-us-avatar-2.jpg" alt="Project Name 2">
+                                            <div class="lightbox-item-overlay-content"><a class="preview popup" href="../images/about-us-avatar-2.jpg" data-fancybox-group="pf-gallery" title="Your Name"><i class="icon-search"></i></a><a class="permalink" href="mailto:email@email.com" target="_blank"><i class="icon-envelope-alt"></i></a>
+                                            </div>
+                                        </div>
+                                        <h3>John Doe</h3>
+                                        <span>Manager/CEO</span>
+                                        <p>Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="cprofile">
+                                        <div class="lightbox-item">
+                                            <img src="../images/about-us-avatar-1.jpg" alt="Project Name 2">
+                                            <div class="../lightbox-item-overlay-content"><a class="preview popup" href="images/about-us-avatar-1.jpg" data-fancybox-group="pf-gallery" title="Your Name"><i class="icon-search"></i></a><a class="permalink" href="mailto:email@email.com" target="_blank"><i class="icon-envelope-alt"></i></a>
+                                            </div>
+                                        </div>
+                                        <h3>Marmut Nakall</h3>
+                                        <span>Manager/CEO</span>
+                                        <p>Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="cprofile">
+                                        <div class="lightbox-item">
+                                            <img src="../images/about-us-avatar-2.jpg" alt="Project Name 2">
+                                            <div class="../lightbox-item-overlay-content"><a class="preview popup" href="images/about-us-avatar-2.jpg" data-fancybox-group="pf-gallery" title="Your Name"><i class="icon-search"></i></a><a class="permalink" href="mailto:email@email.com" target="_blank"><i class="icon-envelope-alt"></i></a>
+                                            </div>
+                                        </div>
+                                        <h3>Michael Moez</h3>
+                                        <span>Manager/CEO</span>
+                                        <p>Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 	<div class="col-md-3">
 		<h3>Typical Buying Price: <%= @neighborhood.median_buy_price_string %></h3>
