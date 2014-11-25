@@ -1,17 +1,7 @@
-<div style="background-image: url('../images/nyc.jpg');" class="bg2 jumbotron2">
 
-<div class="row" style="margin-top: 30px;">
-  <div class="team">
+<!-- <div style="background-image: url('../images/nyc.jpg');" class="bg2 jumbotron2"> -->
 
-<div class="container"  >
-  <div class="row">
-    <div class="col-lg-12 ">
-      <div class="title text-center">
-  	    <h1><%= @neighborhood.name %></h1>
-      </div>
-    </div>
-  	<h1 class="col-md-4">
-
+<!-- 
   	<div class="favorite-button-wrapper">
   		<% if @favorite_id %>
   			<%= render :partial => "remove_favorite_button", :locals => {:favorite_id => @favorite_id} %>
@@ -21,90 +11,109 @@
   	</div>
 
   	</h1>
-  </div>
+  </div> -->
 
-  <div class="col-lg-12">
-    <div class="row">
+ <div class="row" style="margin-top: 70px;">
+  <div class="team">
+            <div class="container">
+                <div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="favorite-button-wrapper">
+                                <% if @favorite_id %>
+                                    <%= render :partial => "remove_favorite_button", :locals => {:favorite_id => @favorite_id} %>
+                                <% else %>
+                                    <%= render :partial => "add_favorite_button", :locals => {:user => @user, :neighborhood => @neighborhood} %>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="row">   
+                        <div class="col-lg-12 ">
+                            <div class="title text-center">
+                                <h1><%= @neighborhood.name %></h1>
+                                <hr/>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="cprofile" style="padding: 5px;">
+                                        <p>Typical Buying Price: <%= @neighborhood.median_buy_price_string %><br>
+                                        Median Monthly Rent: <%= @neighborhood.median_rental_price %><br><br>
+                                        New Listings:</p>
 
-  	  <div class="col-lg-3" style="opacity: 1; top: 0px;">
-        <div class="cprofile">
-  			  <p>Typical Buying Price: <%= @neighborhood.median_buy_price_string %></p>
-  			  <p>Median Monthly Rent: <%= @neighborhood.median_rental_price %></p>
-      
-  				<h3>New Listings:</h3>
+                                        <%= image_tag("#{@neighborhood.noko_img_url_1}" ) %>
+                                        <%= link_to("View This Listing", @neighborhood.noko_listing_url_1, :target => "_blank") %><br>
+                                        <p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_1 %></p>
 
-  				<%= image_tag("#{@neighborhood.noko_img_url_1}" ) %><br>
-  				<%= link_to("View This Listing", @neighborhood.noko_listing_url_1, :target => "_blank") %><br>
-  				<p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_1 %></p><br>
+                                        <%= image_tag("#{@neighborhood.noko_img_url_2}") %>
+                                        <%= link_to("View This Listing", @neighborhood.noko_listing_url_2, :target => "_blank") %><br>
+                                        <p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_2 %></p>
 
-  				<%= image_tag("#{@neighborhood.noko_img_url_2}") %><br>
-  				<%= link_to("View This Listing", @neighborhood.noko_listing_url_2, :target => "_blank") %><br>
-  				<p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_2 %></p><br>
+                                        <%= image_tag("#{@neighborhood.noko_img_url_3}") %>
+                                        <%= link_to("View This Listing", @neighborhood.noko_listing_url_3, :target => "_blank") %><br>
+                                        <p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_3 %></p>
 
-  				<%= image_tag("#{@neighborhood.noko_img_url_3}") %><br>
-  				<%= link_to("View This Listing", @neighborhood.noko_listing_url_3, :target => "_blank") %><br>
-  				<p>Monthly Rent: <%= @neighborhood.noko_monthly_rent_3 %></p>
+                                        <%= link_to("More Listings", @neighborhood.noko_search_url, :target => "_blank") %>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="cprofile">
+                                        <p>Recommended Bars<p>
+                                        <ul>
+                                          <% @neighborhood.bars.each do |bar| %>
+                                            <h6><%= link_to bar.name, bar.url, :target => "_blank" %></h6>
+                                            <%= image_tag("#{bar.stars_img}", height: "15", width: "75") %><br>
+                                            <%= bar.address %><br>
+                                          <% end %>
+                                        </ul>
+                                        <p>Recommended Restaurants</p>
+                                        <ul>
+                                          <% @neighborhood.restaurants.each do |restaurant| %>
+                                            <h6><%= link_to restaurant.name, restaurant.url, :target => "_blank" %></h6>
+                                            <%= image_tag("#{restaurant.stars_img}", height: "15", width: "75") %><br>
+                                            <%= restaurant.address %><br>
+                                          <% end %>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="cprofile">
+                                          <% if @neighborhood.get_tweets %>
+                                              <p>What People Are Saying About</p>
+                                              <span class="neighborhood-name"><%= @neighborhood.name %></span>
+                                              <% @neighborhood.get_tweets.each do |tweet| %>
+                                                <blockquote class="twitter-tweet" lang="en" data-cards="hidden">
+                                                  <a href="<%= tweet.url %>"></a>
+                                                </blockquote>
+                                                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                              <% end %>
+                                          <% end %>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="cprofile">
+                                        <% if @user.persisted? && @user.commute_address %>
+                                            <iframe id="google-map"
+                                            frameborder="0" style="border:0"
+                                            src="<%=@neighborhood.get_google_directions(@user.commute_address)%>">
+                                        </iframe>
+                                      <% else %>
+                                        <div id="map_canvas"></div>
+                                      <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  				<%= link_to("More Listings", @neighborhood.noko_search_url, :target => "_blank") %>
-  			</div>
-  		</div>
-
-  	  <div class="col-lg-3">
-        <div>
-  		    <p>Recommended Bars</p>
-  		    <ul>
-  			    <% @neighborhood.bars.each do |bar| %>
-    				  <h6><%= link_to bar.name, bar.url, :target => "_blank" %></h6>
-    				  <%= image_tag("#{bar.stars_img}", height: "15", width: "75") %><br>
-    				  <%= bar.address %><br>
-  			    <% end %>
-  		    </ul>
-  		    <h3>Recommended Restaurants</h3>
-  		    <ul>
-  			    <% @neighborhood.restaurants.each do |restaurant| %>
-  				    <h4><%= link_to restaurant.name, restaurant.url, :target => "_blank" %></h4>
-  				    <%= image_tag("#{restaurant.stars_img}", height: "15", width: "75") %><br>
-  				    <%= restaurant.address %><br>
-  			    <% end %>
-  		    </ul>
-  	    </div>
-      </div>
-
-      <div class="col-lg-3">
-        <div class="cprofile">
-
-  	      <% if @neighborhood.get_tweets %>
-
-  			    <h3>What People Are Saying About <span class="neighborhood-name"><%= @neighborhood.name %></span></h3>
-  			<% @neighborhood.get_tweets.each do |tweet| %>
-  				<blockquote class="twitter-tweet" lang="en" data-cards="hidden">
-  					<a href="<%= tweet.url %>"></a>
-  				</blockquote>
-  				<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-  			<% end %>
-  		</div>
-    </div>
-  	<% end %>
-
-  	<div class="col-lg-3">
-      <div class="cprofile">
-  		<% if @user.persisted? && @user.commute_address %>
-  			<iframe id="google-map"
-  	    	frameborder="0" style="border:0"
-  	    	src="<%=@neighborhood.get_google_directions(@user.commute_address)%>">
-  	  	</iframe>
-  	  <% else %>
-  	  	<div id="map_canvas"></div>
-  	  <% end %>
-  	</div>
-    </div>
-
-    </div>
-  </div>
 </div>
-</div>
-
-
+<!-- </div>
+ -->
 <script type="text/javascript">
   $(function(){
     var gmap = new GMap();

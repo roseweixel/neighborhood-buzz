@@ -6,6 +6,7 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <%= analytics_init if Rails.env.production? %>
+
   <link href="../css/styles.css" rel="stylesheet">
   <script src="https://maps.googleapis.com/maps/api/js"></script>
 </head>
@@ -65,7 +66,6 @@
       <% end %>
   </nav>
 
-  <!-- <div class="container"> -->
 
     <div id="alert">
         <% if flash[:notice] %>
@@ -74,7 +74,10 @@
     </div>
 
         <%= yield %>
-<!--   </div> -->
+
+  <div class="container">
+  </div>
+
 
 </body>
 </html>

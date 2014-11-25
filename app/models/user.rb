@@ -7,8 +7,14 @@ class User < ActiveRecord::Base
   before_save do
     self.slug = username.gsub(" ", "-").downcase
   end
- 
 
+  NULL_ATTRS = %w( commute_address commute_city )
+  before_save :nil_if_blank
+
+  def nil_if_blank
+    NULL_ATTRS.each { |attr| self[attr] = nil if self[attr].blank? }
+  end
+ 
   has_many :favorites
   has_many :neighborhoods, through: :favorites
 
