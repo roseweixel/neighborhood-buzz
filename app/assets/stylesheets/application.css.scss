@@ -12,6 +12,11 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap-theme
+ *= require bootstrap
+ *= require navbar
+ *= require styles
+
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.eot"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.woff"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.ttf"
