@@ -9,6 +9,20 @@ class NeighborhoodsController < ApplicationController
         else
             @user = User.new
         end
+        if @user.commute_address
+            @commute_place = @user.commute_address
+            @address_value = :value
+        else
+            @commute_place = "e.g. 11 Broadway"
+            @commute_value = :placeholder
+        end
+        if @user.commute_city
+            @city = @user.commute_city
+            @city_value = :value
+        else
+            @city = "e.g. New York"
+            @city_value = :placeholder
+        end
     end
 
     def show
