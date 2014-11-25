@@ -25,6 +25,13 @@
   
 
             <li><%= link_to("Logout", logout_path) %></li>
+            <li class="pull-right">
+            <% if @favorite_id %>
+                <%= render :partial => "remove_favorite_button", :locals => {:favorite_id => @favorite_id} %>
+            <% else %>
+                <%= render :partial => "add_favorite_button", :locals => {:user => @user, :neighborhood => @neighborhood} %>
+            <% end %>
+          </li>
 
         </ul> 
       <% end %>
