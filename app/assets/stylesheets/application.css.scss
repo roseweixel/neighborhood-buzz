@@ -12,13 +12,12 @@
  *
  *= require_tree .
  *= require_self
-
-
- *= require bootstrap-theme
  *= require bootstrap
+ *= require bootstrap-theme
  *= require navbar
  */
  @import "bootstrap";
+
 .bg {
   background: url('images/nyc.jpg') no-repeat center center;
   position: fixed;
