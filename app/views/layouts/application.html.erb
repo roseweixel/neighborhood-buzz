@@ -4,7 +4,6 @@
   <title>NeighborhoodBuzz</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
-  
   <%= csrf_meta_tags %>
   <%= analytics_init if Rails.env.production? %>
   <link href="../css/styles.css" rel="stylesheet">
@@ -17,60 +16,56 @@
         <%= link_to("Neighborhood Buzz", neighborhoods_path, class: "navbar-brand") %>
       </div>
       <% if session[:user_id] %>
-      <ul class="nav navbar-nav">
-            <li style="margin-left: 50px;"><%= link_to("Hello #{@user.username}. See your favorites.", user_path(@user))  %></li> 
-
+        <ul class="nav navbar-nav">
+          <li style="margin-left: 50px;"><%= link_to("Hello #{@user.username}. See your favorites.", user_path(@user))  %></li> 
           <li><%= link_to("Edit Your Profile", edit_user_path(@user))  %></li>
-  
-
-            <li><%= link_to("Logout", logout_path) %></li>
-
+          <li><%= link_to("Logout", logout_path) %></li>
         </ul> 
       <% end %>
 
 
-        <% if !session[:user_id] %>
-          <div class="nav navbar-nav navbar-right">
-            <li class="dropdown" style="margin-right: 20px;">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                Sign In
-                <b class="caret"></b>
-              </a>
-              <div class="dropdown-menu" style="padding: 10px;">
-                <%= form_tag(sessions_path, :class => "form-menu", :roll => "form") do %>
-                  <div class="form-group">
-                    <input type="text" name="username" placeholder="username" />
-                  </div>
-                  <input class="navbar-btn" name="commit" type="submit" value="Sign In">
-                <% end %>
-              </div>
-            </li>
+      <% if !session[:user_id] %>
+        <div class="nav navbar-nav navbar-right">
+          <li class="dropdown" style="margin-right: 20px;">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown">
+              Sign In
+              <b class="caret"></b>
+            </a>
+            <div class="dropdown-menu" style="padding: 10px;">
+              <%= form_tag(sessions_path, :class => "form-menu", :roll => "form") do %>
+                <div class="form-group">
+                  <input type="text" name="username" placeholder="username" />
+                </div>
+                <input class="navbar-btn" name="commit" type="submit" value="Sign In">
+              <% end %>
+            </div>
+          </li>
 
-            <li class="dropdown" style="margin-right: 40px;">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                Sign Up
-                <b class="caret"></b>
-              </a>
-              <div class="dropdown-menu" style="padding: 10px;">
-                <%= form_for(User.new, :html => {:class => "form-menu", :roll => "form"}) do |f| %>
-                  <div class="form-group">
-                    <%= f.text_field :username, placeholder: "username" %>
-                  </div>
-                  <div class="form-group">
-                    <%= f.text_field :email, placeholder: "email address" %>
-                  </div>
-                  <div class="form-group">
-                    <%= f.text_field :commute_address, placeholder: "where do you work?" %>
-                  </div>
-                  <%= f.submit "Sign Up", class: "navbar-btn" %>
-                <% end %>
-              </div>
-            </li>
-          </div>
-        <% end %>
+          <li class="dropdown" style="margin-right: 40px;">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown">
+              Sign Up
+              <b class="caret"></b>
+            </a>
+            <div class="dropdown-menu" style="padding: 10px;">
+              <%= form_for(User.new, :html => {:class => "form-menu", :roll => "form"}) do |f| %>
+                <div class="form-group">
+                  <%= f.text_field :username, placeholder: "username" %>
+                </div>
+                <div class="form-group">
+                  <%= f.text_field :email, placeholder: "email address" %>
+                </div>
+                <div class="form-group">
+                  <%= f.text_field :commute_address, placeholder: "where do you work?" %>
+                </div>
+                <%= f.submit "Sign Up", class: "navbar-btn" %>
+              <% end %>
+            </div>
+          </li>
+        </div>
+      <% end %>
   </nav>
 
-  <div class="container">
+  <!-- <div class="container"> -->
 
     <div id="alert">
         <% if flash[:notice] %>
@@ -79,7 +74,7 @@
     </div>
 
         <%= yield %>
-    </div>
+<!--   </div> -->
 
 </body>
 </html>
