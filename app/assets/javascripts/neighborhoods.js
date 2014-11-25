@@ -4,6 +4,7 @@
 $(function(){
 	$('.favorite-button-wrapper').on("submit", "form", function(event){
 		event.preventDefault();
+    event.stopPropagation();
 		var action = $(this).attr("action");
 		var method = $(this).attr("method");
 
