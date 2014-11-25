@@ -58,9 +58,17 @@ group :production do
   gem "rails_12factor"
 end
 
-gem "figaro"
+
+group :assets do
+  gem 'less-rails-bootstrap'
+  gem 'libv8', '~> 3.16.14.7'
+  gem 'therubyracer', '~> 0.12.1'
+  gem 'font-awesome-rails'
+end
 
 gem "bootstrap-sass", "~> 3.1.1"
+
+gem "figaro"
 
 gem "json"
 

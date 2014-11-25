@@ -4,53 +4,72 @@
   <title>NeighborhoodBuzz</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  
   <%= csrf_meta_tags %>
   <%= analytics_init if Rails.env.production? %>
+  <script src="../js/lib/pace.min.js"></script>
+  <link href="../css/styles.css" rel="stylesheet">
   <script src="https://maps.googleapis.com/maps/api/js"></script>
 </head>
 <body>
-	<nav class="nav navbar-inverse navbar-fixed-top" roll="navigation">
-    <div class="navbar-header">
-      <%= link_to("Neighborhood Buzz", neighborhoods_path, class: "navbar-brand") %>
-    </div>
-    
-    <ul class="nav navbar-nav">
+
+  <nav class="nav navbar-default navbar-fixed-top" roll="navigation">
+      <div class="navbar-header">
+        <%= link_to("Neighborhood Buzz", neighborhoods_path, class: "navbar-brand") %>
+      </div>
       <% if session[:user_id] %>
-        <li>
-          <%= link_to("Hello #{@user.username}. See your favorites.", user_path(@user))  %>
-        </li>
-        <li>
-          <%= link_to("Edit Your Profile", edit_user_path(@user))  %>
-        </li>
-        <li>
-          <%= link_to("Logout", logout_path) %>
-        </li>
-      <% end %>
-    </ul>
-    <div id="navbar" class="navbar-collapse collapse">
-      <%= form_for(User.new, :html => {:class => "navbar-form navbar-right", :roll => "form"}) do |f| %>
-        <div class="form-group">
-          <%= f.text_field :username, placeholder: "username" %>
-        </div>
-        <div class="form-group">
-          <%= f.text_field :email, placeholder: "email address" %>
-        </div>
-        <div class="form-group">
-          <%= f.text_field :commute_address, placeholder: "where do you work?" %>
-        </div>
-        <%= f.submit "Sign Up", class: "btn btn-success" %>
-      <% end %>
-      <%= form_tag(sessions_path, :class => "navbar-form navbar-right", :roll => "form") do %>
-        <div class="form-group">
-          <input type="text" name="username" placeholder="username" />
-        </div>
-        <input class="btn btn-success" name="commit" type="submit" value="Sign In">
+      <ul class="nav navbar-nav">
+            <li style="margin-left: 50px;"><%= link_to("Hello #{@user.username}. See your favorites.", user_path(@user))  %></li> 
 
+          <li><%= link_to("Edit Your Profile", edit_user_path(@user))  %></li>
+  
+
+            <li><%= link_to("Logout", logout_path) %></li>
+
+        </ul> 
       <% end %>
-    </div>
+
+
+        <% if !session[:user_id] %>
+          <div class="nav navbar-nav navbar-right">
+            <li class="dropdown" style="margin-right: 20px;">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                Sign In
+                <b class="caret"></b>
+              </a>
+              <div class="dropdown-menu" style="padding: 10px;">
+                <%= form_tag(sessions_path, :class => "form-menu", :roll => "form") do %>
+                  <div class="form-group">
+                    <input type="text" name="username" placeholder="username" />
+                  </div>
+                  <input class="navbar-btn" name="commit" type="submit" value="Sign In">
+                <% end %>
+              </div>
+            </li>
+
+            <li class="dropdown" style="margin-right: 40px;">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                Sign Up
+                <b class="caret"></b>
+              </a>
+              <div class="dropdown-menu" style="padding: 10px;">
+                <%= form_for(User.new, :html => {:class => "form-menu", :roll => "form"}) do |f| %>
+                  <div class="form-group">
+                    <%= f.text_field :username, placeholder: "username" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.text_field :email, placeholder: "email address" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.text_field :commute_address, placeholder: "where do you work?" %>
+                  </div>
+                  <%= f.submit "Sign Up", class: "navbar-btn" %>
+                <% end %>
+              </div>
+            </li>
+          </div>
+        <% end %>
   </nav>
-
-
 
   <div class="container">
 
@@ -59,8 +78,9 @@
            <div class="alert alert-warning"><%= flash[:notice] %></div>
         <% end %>
     </div>
-		<%= yield %>
 
-	</div>
+        <%= yield %>
+    </div>
+
 </body>
 </html>
