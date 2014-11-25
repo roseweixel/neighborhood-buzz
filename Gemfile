@@ -58,6 +58,7 @@ group :production do
   gem "rails_12factor"
 end
 
+
 group :assets do
   gem 'less-rails-bootstrap'
   gem 'libv8', '~> 3.16.14.7'
@@ -65,9 +66,9 @@ group :assets do
   gem 'font-awesome-rails'
 end
 
-gem "figaro"
-
 gem "bootstrap-sass", "~> 3.1.1"
+
+gem "figaro"
 
 gem "json"
 
