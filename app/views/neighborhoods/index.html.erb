@@ -1,29 +1,47 @@
 <h1>NYC NEIGHBORHOODS</h1>
 
-<select id="borough-selection">
-  <option value="hasnt-been-chosen">SELECT A BOROUGH</option>
-  <option value="Manhattan">MANHATTAN</option>
-  <option value="Brooklyn">BROOKLYN</option>
-  <option value="Queens">QUEENS</option>
-</select>
 
-<div class="neighborhood-dropdown" id="manhattan-dropdown">
-  <%= form_for(@neighborhood) do |f| %>
-    <%= f.collection_select :id, @manhattan_neighborhoods,:id,:name, {:prompt => "SELECT A MANHATTAN NEIGHBORHOOD"} %>
-      <%= f.submit value: "LET'S SEE THE BUZZ", :class => "see-buzz btn disabled" %>
-  <% end %>
-</div>
+<div id="home-slide">
+  <ul class="slides-container text-center">
+    <li>
+        <!-- Slide -->
+        <div class="slides-filter"></div>
+        <div style="background-image: url('<%= image_path('home-slide-1.jpg') %>')" class="bg-parallax parallaxize"></div>
+        <div class="bigHeader slideUp">
+            <div class="front-logo"></div>
+            <hr class="white">
 
-<div class="neighborhood-dropdown" id="brooklyn-dropdown">
-  <%= form_for(@neighborhood) do |f| %>
-    <%= f.collection_select :id, @brooklyn_neighborhoods,:id,:name, {:prompt => "SELECT A BROOKLYN NEIGHBORHOOD"}%>
-    <%= f.submit value: "LET'S SEE THE BUZZ", :class => "see-buzz btn disabled" %>
-  <% end %>
-</div>
+        <select id="borough-selection">
+          <option value="hasnt-been-chosen">SELECT A BOROUGH</option>
+          <option value="Manhattan">MANHATTAN</option>
+          <option value="Brooklyn">BROOKLYN</option>
+          <option value="Queens">QUEENS</option>
+        </select>
+        <div class="neighborhood-dropdown" id="manhattan-dropdown">
+          <%= form_for(@neighborhood) do |f| %>
+            <%= f.collection_select :id, @manhattan_neighborhoods,:id,:name, {:prompt => "SELECT A MANHATTAN NEIGHBORHOOD"} %>
+              <%= f.submit value: "LET'S SEE THE BUZZ", :class => "see-buzz btn disabled" %>
+          <% end %>
+        </div>
 
-<div class="neighborhood-dropdown" id="queens-dropdown">
-  <%= form_for(@neighborhood) do |f| %>
-    <%= f.collection_select :id, @queens_neighborhoods,:id,:name, {:prompt => "SELECT A QUEENS NEIGHBORHOOD"}%>
-    <%= f.submit value: "LET'S SEE THE BUZZ", :class => "see-buzz btn disabled" %>
-  <% end %>
+        <div class="neighborhood-dropdown" id="brooklyn-dropdown">
+          <%= form_for(@neighborhood) do |f| %>
+            <%= f.collection_select :id, @brooklyn_neighborhoods,:id,:name, {:prompt => "SELECT A BROOKLYN NEIGHBORHOOD"}%>
+            <%= f.submit value: "LET'S SEE THE BUZZ", :class => "see-buzz btn disabled" %>
+          <% end %>
+        </div>
+
+        <div class="neighborhood-dropdown" id="queens-dropdown">
+          <%= form_for(@neighborhood) do |f| %>
+            <%= f.collection_select :id, @queens_neighborhoods,:id,:name, {:prompt => "SELECT A QUEENS NEIGHBORHOOD"}%>
+            <%= f.submit value: "LET'S SEE THE BUZZ", :class => "see-buzz btn disabled" %>
+          <% end %>
+        </div>
+        </div>
+    </li>
+  </ul>
+  <nav class="slides-navigation">
+      <a href="javascript:;" class="prev"><i class="icon-angle-left"></i></a>
+      <a href="javascript:;" class="next"><i class="icon-angle-right"></i></a>
+  </nav>
 </div>
