@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+  has_many :favorites
+  has_many :neighborhoods, through: :favorites
+  has_many :user_borough_preferences
+  has_many :boroughs, through: :user_borough_preferences
+
   validates :username, presence: true
   validates :username, uniqueness: { case_sensitive: false }
   validates :email, presence: true
@@ -14,11 +19,6 @@ class User < ActiveRecord::Base
   def nil_if_blank
     NULL_ATTRS.each { |attr| self[attr] = nil if self[attr].blank? }
   end
- 
-  has_many :favorites
-  has_many :neighborhoods, through: :favorites
-  has_many :user_borough_preferences
-  has_many :boroughs, through: :user_borough_preferences
 
   def self.find_by_slug(slug)
     User.all.find_by(slug: slug)
