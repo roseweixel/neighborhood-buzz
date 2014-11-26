@@ -25,7 +25,7 @@
                 Edit Your Profile
                 <b class="caret"></b>
               </a>
-              <div class="dropdown-menu" style="padding: 10px;">
+              <div class="dropdown-menu" style="padding: 10px; width: 150%;">
                 <%= form_for(@user, :html => {:roll => "form"}) do |f| %>
                   <div class="form-group">
                   <%= f.label :username %><br>
@@ -41,6 +41,14 @@
                   <%= f.text_field :commute_address, @commute_value => @commute_place %><br>
                   <%= f.label "City" %><br>
                   <%= f.text_field :commute_city, @city_value => @city %><br>
+                  <%= f.check_box(:want_to_rent) %>
+                  <%= f.label(:want_to_rent, "looking to rent") %><br>
+                  <%= f.label("Rental price range") %><br>
+                  <%= f.number_field(:min_rent_price, :style => "width:42%;")%> to <%= f.number_field(:max_rent_price, :style => "width:42%;")%><br>
+                  <%= f.check_box(:want_to_buy) %>
+                  <%= f.label(:want_to_buy, "looking to buy") %><br>
+                  <%= f.label("Buying price range") %><br>
+                  <%= f.number_field(:min_buy_price, :style => "width:42%;")%> to <%= f.number_field(:max_buy_price, :style => "width:42%;")%><br>
                   </div>
                   <%= f.submit "Update" %>
                 <% end %>

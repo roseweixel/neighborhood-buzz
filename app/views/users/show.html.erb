@@ -23,23 +23,53 @@
 	<% end %>
 	</div>
 	<% if @user.favorites.size >= 1%>
-	<h3>Neighborhoods Similar in Ownership Price</h3>
-	<div class="row">
-	<% @user.similar_to_favorites_buy_price.each do |neighborhood| %>
-		<div class="col-md-2" style='padding: 0; background-image: url("<%= image_url(neighborhood.user_favorite_photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
-			<h5 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough.name}", neighborhood_path(neighborhood) %></h5>
+		<% if @user.want_to_buy %>
+			<h3>Neighborhoods Similar in Ownership Price</h3>
+			<div class="row">
+			<% @user.similar_to_favorites_buy_price.each do |neighborhood| %>
+				<div class="col-md-2" style='padding: 0; background-image: url("<%= image_url(neighborhood.user_favorite_photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
+					<h5 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough.name}", neighborhood_path(neighborhood) %></h5>
+				</div>
+			<% end %>
+			</div>
+		<% end %>
+		<% if @user.want_to_rent %>
+			<h3>Neighborhoods Similar in Rent</h3>
+			<div class="row">
+			<% @user.similar_to_favorites_rent_price.each do |neighborhood| %>
+				<div class="col-md-2" style='padding: 0; background-image: url("<%= image_url(neighborhood.user_favorite_photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
+					<h5 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough.name}", neighborhood_path(neighborhood) %></h5>
+				</div>
+		<% end %>
+		</div>
+		<% end %>
+	<% end %>
+	<%if @user.min_buy_price && @user.max_buy_price && (@user.want_to_buy || @user.want_to_buy == @user.want_to_rent) %>
+		<div class="wrapper">
+			<div class="row">
+			<h3>Neighborhoods In Your Buy Price Range</h3>
+			
+			<% @user.in_buy_price_range.each do |neighborhood| %>
+				<div class="col-md-2" style='padding: 0; background-image: url("<%= image_url(neighborhood.user_favorite_photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
+					<h5 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough.name}", neighborhood_path(neighborhood) %></h5>
+				</div>
+			<% end %>
+			</div>
 		</div>
 	<% end %>
-	</div>
 
-	<h3>Neighborhoods Similar in Rent</h3>
-	<div class="row">
-	<% @user.similar_to_favorites_rent_price.each do |neighborhood| %>
-		<div class="col-md-2" style='padding: 0; background-image: url("<%= image_url(neighborhood.user_favorite_photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
-			<h5 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough.name}", neighborhood_path(neighborhood) %></h5>
+	<%if @user.min_rent_price && @user.max_rent_price && (@user.want_to_rent || @user.want_to_buy == @user.want_to_rent) %>
+		<div class="wrapper">
+			<div class="row">
+			<h3>Neighborhoods In Your Rental Price Range</h3>
+			
+			<% @user.in_rental_price_range.each do |neighborhood| %>
+				<div class="col-md-2" style='padding: 0; background-image: url("<%= image_url(neighborhood.user_favorite_photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
+					<h5 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough.name}", neighborhood_path(neighborhood) %></h5>
+				</div>
+			<% end %>
+			</div>
 		</div>
-	<% end %>
-	</div>
 	<% end %>
 </div>	
 </div>

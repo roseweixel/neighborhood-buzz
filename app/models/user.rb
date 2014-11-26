@@ -65,8 +65,16 @@ class User < ActiveRecord::Base
     results
   end
 
+  def in_rental_price_range
+    Neighborhood.where(median_rental_price_integer: min_rent_price..max_rent_price).limit(18)
+  end
+
+  def in_buy_price_range
+    Neighborhood.where(median_buy_price: min_buy_price..max_buy_price).limit(18)
+  end
+
   def similar_to_favorites_rent_price
-    delta = average_rent_price_of_favorites / 20
+    delta = average_rent_price_of_favorites / 15
     results = Neighborhood.select{|neighborhood| neighborhood.median_rental_price_integer.between?((average_rent_price_of_favorites - delta), (average_rent_price_of_favorites + delta)) && !self.neighborhoods.include?(neighborhood)}
     results
   end

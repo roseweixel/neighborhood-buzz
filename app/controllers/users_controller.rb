@@ -42,6 +42,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    #binding.pry
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to(:back)
@@ -49,6 +50,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:username, :email, :commute_address, :commute_city)
+      params.require(:user).permit(:username, :email, :commute_address, :commute_city, :want_to_rent, :want_to_buy, :min_rent_price, :max_rent_price, :min_buy_price, :max_buy_price)
     end
 end
