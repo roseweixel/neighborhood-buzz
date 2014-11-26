@@ -26,17 +26,24 @@ class User < ActiveRecord::Base
     favorites.find{|favorite| favorite.neighborhood_id == neighborhood.id}
   end
 
-  def average_price_of_favorites
+  def average_buy_price_of_favorites
     prices = neighborhoods.map{|neighborhood| neighborhood.median_buy_price}
     sum = prices.inject(:+)
     average = sum / prices.size
     average.round
   end
 
-  def average_price_string
+  def average_rent_price_of_favorites
+    prices = neighborhoods.map{|neighborhood| neighborhood.median_rental_price_integer}
+    sum = prices.inject(:+)
+    average = sum / prices.size
+    average.round
+  end
+
+  def average_price_string(price_int)
     formatted_string = "$"
     formatted_array = []
-    unformatted_string = average_price_of_favorites.to_s
+    unformatted_string = price_int.to_s
     #binding.pry
     string_array = unformatted_string.split("")
     while string_array.length >= 4
@@ -52,11 +59,19 @@ class User < ActiveRecord::Base
     formatted_string
   end
 
-  def similar_to_favorites_by_price
-    delta = average_price_of_favorites / 20
-    results = Neighborhood.select{|neighborhood| neighborhood.median_buy_price.between?((average_price_of_favorites - delta), (average_price_of_favorites + delta)) && !self.neighborhoods.include?(neighborhood)}
+  def similar_to_favorites_buy_price
+    delta = average_buy_price_of_favorites / 20
+    results = Neighborhood.select{|neighborhood| neighborhood.median_buy_price.between?((average_buy_price_of_favorites - delta), (average_buy_price_of_favorites + delta)) && !self.neighborhoods.include?(neighborhood)}
     results
   end
+
+  def similar_to_favorites_rent_price
+    delta = average_rent_price_of_favorites / 20
+    results = Neighborhood.select{|neighborhood| neighborhood.median_buy_price.between?((average_rent_price_of_favorites - delta), (average_rent_price_of_favorites + delta)) && !self.neighborhoods.include?(neighborhood)}
+    results
+  end
+
+  # median_rental_price_integer
 
 
   # def logged_in?
