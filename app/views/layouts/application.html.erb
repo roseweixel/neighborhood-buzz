@@ -50,6 +50,13 @@
                   <%= f.label("Buying price range") %><br>
                   <%= f.number_field(:min_buy_price, :style => "width:42%;")%> to <%= f.number_field(:max_buy_price, :style => "width:42%;")%><br>
                   </div>
+                  <%= f.label("Boroughs you're interested in") %><br>
+                  <%= f.check_box(:likes_manhattan) %>
+                  <%= f.label(:likes_manhattan, "Manhattan") %><br>
+                  <%= f.check_box(:likes_brooklyn) %>
+                  <%= f.label(:likes_brooklyn, "Brooklyn") %><br>
+                  <%= f.check_box(:likes_queens) %>
+                  <%= f.label(:likes_queens, "Queens") %><br>
                   <%= f.submit "Update" %>
                 <% end %>
               </div>

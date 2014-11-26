@@ -50,6 +50,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:username, :email, :commute_address, :commute_city, :want_to_rent, :want_to_buy, :min_rent_price, :max_rent_price, :min_buy_price, :max_buy_price)
+      params.require(:user).permit(:username, :email, :commute_address, :commute_city, :want_to_rent, :want_to_buy, :min_rent_price, :max_rent_price, :min_buy_price, :max_buy_price, :likes_manhattan, :likes_brooklyn, :likes_queens)
     end
 end

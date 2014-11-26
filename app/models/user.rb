@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
   has_many :favorites
   has_many :neighborhoods, through: :favorites
-  has_many :user_borough_preferences
-  has_many :boroughs, through: :user_borough_preferences
 
   validates :username, presence: true
   validates :username, uniqueness: { case_sensitive: false }
@@ -68,17 +66,31 @@ class User < ActiveRecord::Base
   end
 
   def in_rental_price_range
-    Neighborhood.where(median_rental_price_integer: min_rent_price..max_rent_price).limit(18)
+    Neighborhood.where(median_rental_price_integer: min_rent_price..max_rent_price).sample(18)
   end
 
   def in_buy_price_range
-    Neighborhood.where(median_buy_price: min_buy_price..max_buy_price).limit(18)
+    Neighborhood.where(median_buy_price: min_buy_price..max_buy_price).sample(18)
   end
 
   def similar_to_favorites_rent_price
     delta = average_rent_price_of_favorites / 15
     results = Neighborhood.select{|neighborhood| neighborhood.median_rental_price_integer.between?((average_rent_price_of_favorites - delta), (average_rent_price_of_favorites + delta)) && !self.neighborhoods.include?(neighborhood)}
     results
+  end
+
+  def liked_boroughs
+    liked_boroughs = []
+    if likes_manhattan
+      liked_boroughs << Borough.where(name: "Manhattan").first
+    end
+    if likes_brooklyn
+      liked_boroughs << Borough.where(name: "Brooklyn").first
+    end
+    if likes_queens
+      liked_boroughs << Borough.where(name: "Queens").first
+    end
+    liked_boroughs
   end
 
 end

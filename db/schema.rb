@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126165556) do
+ActiveRecord::Schema.define(version: 20141126174953) do
 
   create_table "bars", force: true do |t|
     t.integer  "neighborhood_id"
@@ -68,13 +68,6 @@ ActiveRecord::Schema.define(version: 20141126165556) do
     t.datetime "updated_at"
   end
 
-  create_table "user_borough_preferences", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "borough_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "email"
@@ -89,6 +82,9 @@ ActiveRecord::Schema.define(version: 20141126165556) do
     t.integer  "max_rent_price",  default: 10000000
     t.integer  "min_buy_price",   default: 0
     t.integer  "max_buy_price",   default: 10000000
+    t.boolean  "likes_manhattan", default: true
+    t.boolean  "likes_brooklyn",  default: true
+    t.boolean  "likes_queens",    default: true
   end
 
 end
