@@ -71,14 +71,4 @@ class User < ActiveRecord::Base
     results
   end
 
-  # median_rental_price_integer
-
-
-  # def logged_in?
-  #   if session[:user_id]
-  #     return true
-  #   else
-  #     return false
-  #   end
-  # end
 end

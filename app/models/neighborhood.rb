@@ -122,9 +122,9 @@ class Neighborhood < ActiveRecord::Base
           ret_hash[:img_url_3] = listings_page.css(".left-two-thirds .photo img")[4].attributes["data-original"].value
         end
       else
-        ret_hash[:img_url_1] = "app/assets/images/apt-stock-photo-1.jpg"
-        ret_hash[:img_url_2] = "app/assets/images/apt-stock-photo-2.jpg"
-        ret_hash[:img_url_3] = "app/assets/images/apt-stock-photo-3.jpg"
+        ret_hash[:img_url_1] = "apt-stock-photo-1.jpg"
+        ret_hash[:img_url_2] = "apt-stock-photo-2.jpg"
+        ret_hash[:img_url_3] = "apt-stock-photo-3.jpg"
       end
 
       root_url = "http://streeteasy.com"
