@@ -125,16 +125,15 @@ class SeedDatabase
   "Windsor Terrace"=>"https://farm6.staticflickr.com/5598/15564880711_b7e602a738_o.jpg"
 }
   def initialize
+    create_users
     create_boroughs
-    add_borough_ids_to_neighborhoods
-    # create_users
-    # create_neighborhoods
-    # create_restaurants
-    # create_bars
-    # add_photo_url_to_neighborhoods
-    # add_median_buy_price_to_neighborhoods
-    # add_noko_listing_attributes_to_neighborhoods
-    # add_median_buy_price_string_to_neighborhoods
+    create_neighborhoods_from_boroughs
+    create_restaurants
+    create_bars
+    add_photo_url_to_neighborhoods
+    add_median_buy_price_to_neighborhoods
+    add_noko_listing_attributes_to_neighborhoods
+    add_median_buy_price_string_to_neighborhoods
   end
 
   def create_users
@@ -145,122 +144,133 @@ class SeedDatabase
     ])
   end
 
-  def create_neighborhoods
+  def create_boroughs
+    Borough.create([
+      {name: 'Manhattan'},
+      {name: 'Brooklyn'},
+      {name: 'Queens'}
+    ])
+  end
+
+  def create_neighborhoods_from_boroughs
     create_manhattan_neighborhoods
     create_brooklyn_neighborhoods
     create_queens_neighborhoods
   end
 
   def create_manhattan_neighborhoods
-    Neighborhood.create([
-      {borough: "Manhattan", name: "Battery Park City"},
-      {borough: "Manhattan", name: "Chelsea"},
-      {borough: "Manhattan", name: "East Harlem"},
-      {borough: "Manhattan", name: "East Village"},
-      {borough: "Manhattan", name: "Financial District"},
-      {borough: "Manhattan", name: "Flatiron"},
-      {borough: "Manhattan", name: "Gramercy"},
-      {borough: "Manhattan", name: "Hamilton Heights"},
-      {borough: "Manhattan", name: "Harlem"},
-      {borough: "Manhattan", name: "Inwood"},
-      {borough: "Manhattan", name: "Kips Bay"},
-      {borough: "Manhattan", name: "Lower East Side"},
-      {borough: "Manhattan", name: "Manhattan Valley"},
-      {borough: "Manhattan", name: "Midtown East"},
-      {borough: "Manhattan", name: "Midtown West"},
-      {borough: "Manhattan", name: "Morningside Heights"},
-      {borough: "Manhattan", name: "Murray Hill"},
-      {borough: "Manhattan", name: "NoHo"},
-      {borough: "Manhattan", name: "Roosevelt Island"},
-      {borough: "Manhattan", name: "Soho"},
-      {borough: "Manhattan", name: "Tribeca"},
-      {borough: "Manhattan", name: "Union Square"},
-      {borough: "Manhattan", name: "Upper East Side"},
-      {borough: "Manhattan", name: "Upper West Side"},
-      {borough: "Manhattan", name: "Washington Heights"},
-      {borough: "Manhattan", name: "West Village"}
+    manhattan = Borough.where(name: 'Manhattan').first
+    manhattan.neighborhoods.create([
+      {name: "Battery Park City"},
+      {name: "Chelsea"},
+      {name: "East Harlem"},
+      {name: "East Village"},
+      {name: "Financial District"},
+      {name: "Flatiron"},
+      {name: "Gramercy"},
+      {name: "Hamilton Heights"},
+      {name: "Harlem"},
+      {name: "Inwood"},
+      {name: "Kips Bay"},
+      {name: "Lower East Side"},
+      {name: "Manhattan Valley"},
+      {name: "Midtown East"},
+      {name: "Midtown West"},
+      {name: "Morningside Heights"},
+      {name: "Murray Hill"},
+      {name: "NoHo"},
+      {name: "Roosevelt Island"},
+      {name: "Soho"},
+      {name: "Tribeca"},
+      {name: "Union Square"},
+      {name: "Upper East Side"},
+      {name: "Upper West Side"},
+      {name: "Washington Heights"},
+      {name: "West Village"}
     ])
   end
 
   def create_brooklyn_neighborhoods
-    Neighborhood.create([
-      {borough: "Brooklyn", name: "Bay Ridge"},
-      {borough: "Brooklyn", name: "Bedford Stuyvesant"},
-      {borough: "Brooklyn", name: "Bensonhurst"},
-      {borough: "Brooklyn", name: "Boerum Hill"},
-      {borough: "Brooklyn", name: "Borough Park"},
-      {borough: "Brooklyn", name: "Brighton Beach"},
-      {borough: "Brooklyn", name: "Brooklyn Heights"},
-      {borough: "Brooklyn", name: "Brownsville"},
-      {borough: "Brooklyn", name: "Bushwick"},
-      {borough: "Brooklyn", name: "Canarsie"},
-      {borough: "Brooklyn", name: "Carroll Gardens"},
-      {borough: "Brooklyn", name: "Clinton Hill"},
-      {borough: "Brooklyn", name: "Cobble Hill"},
-      {borough: "Brooklyn", name: "Coney Island"},
-      {borough: "Brooklyn", name: "Crown Heights"},
-      {borough: "Brooklyn", name: "Ditmas Park"},
-      {borough: "Brooklyn", name: "Dumbo"},
-      {borough: "Brooklyn", name: "Dyker Heights"},
-      {borough: "Brooklyn", name: "East New York"},
-      {borough: "Brooklyn", name: "Flatbush"},
-      {borough: "Brooklyn", name: "Fort Greene"},
-      {borough: "Brooklyn", name: "Fort Hamilton"},
-      {borough: "Brooklyn", name: "Gravesend"},
-      {borough: "Brooklyn", name: "Greenpoint"},
-      {borough: "Brooklyn", name: "Kensington"},
-      {borough: "Brooklyn", name: "Midwood"},
-      {borough: "Brooklyn", name: "Ocean Hill"},
-      {borough: "Brooklyn", name: "Park Slope"},
-      {borough: "Brooklyn", name: "Prospect Heights"},
-      {borough: "Brooklyn", name: "Prospect Lefferts Gardens"},
-      {borough: "Brooklyn", name: "Red Hook"},
-      {borough: "Brooklyn", name: "Sheepshead Bay"},
-      {borough: "Brooklyn", name: "Sunset Park"},
-      {borough: "Brooklyn", name: "Vinegar Hill"},
-      {borough: "Brooklyn", name: "Williamsburg"},
-      {borough: "Brooklyn", name: "Windsor Terrace"}
+    brooklyn = Borough.where(name: 'Brooklyn').first
+    brooklyn.neighborhoods.create([
+      {name: "Bay Ridge"},
+      {name: "Bedford Stuyvesant"},
+      {name: "Bensonhurst"},
+      {name: "Boerum Hill"},
+      {name: "Borough Park"},
+      {name: "Brighton Beach"},
+      {name: "Brooklyn Heights"},
+      {name: "Brownsville"},
+      {name: "Bushwick"},
+      {name: "Canarsie"},
+      {name: "Carroll Gardens"},
+      {name: "Clinton Hill"},
+      {name: "Cobble Hill"},
+      {name: "Coney Island"},
+      {name: "Crown Heights"},
+      {name: "Ditmas Park"},
+      {name: "Dumbo"},
+      {name: "Dyker Heights"},
+      {name: "East New York"},
+      {name: "Flatbush"},
+      {name: "Fort Greene"},
+      {name: "Fort Hamilton"},
+      {name: "Gravesend"},
+      {name: "Greenpoint"},
+      {name: "Kensington"},
+      {name: "Midwood"},
+      {name: "Ocean Hill"},
+      {name: "Park Slope"},
+      {name: "Prospect Heights"},
+      {name: "Prospect Lefferts Gardens"},
+      {name: "Red Hook"},
+      {name: "Sheepshead Bay"},
+      {name: "Sunset Park"},
+      {name: "Vinegar Hill"},
+      {name: "Williamsburg"},
+      {name: "Windsor Terrace"}
     ])
   end
 
   def create_queens_neighborhoods
-    Neighborhood.create([
-      {borough: "Queens", name: "Astoria"},
-      {borough: "Queens", name: "Bayside"},
-      {borough: "Queens", name: "Bellerose"},
-      {borough: "Queens", name: "Briarwood"},
-      {borough: "Queens", name: "College Point"},
-      {borough: "Queens", name: "Corona"},
-      {borough: "Queens", name: "Douglaston"},
-      {borough: "Queens", name: "Elmhurst"},
-      {borough: "Queens", name: "Far Rockaway"},
-      {borough: "Queens", name: "Floral Park"},
-      {borough: "Queens", name: "Flushing"},
-      {borough: "Queens", name: "Forest Hills"},
-      {borough: "Queens", name: "Fresh Meadows"},
-      {borough: "Queens", name: "Glen Oaks"},
-      {borough: "Queens", name: "Glendale"},
-      {borough: "Queens", name: "Hollis"},
-      {borough: "Queens", name: "Howard Beach"},
-      {borough: "Queens", name: "Jackson Heights"},
-      {borough: "Queens", name: "Jamaica"},
-      {borough: "Queens", name: "Kew Gardens"},
-      {borough: "Queens", name: "Kew Gardens Hills"},
-      {borough: "Queens", name: "Little Neck"},
-      {borough: "Queens", name: "Long Island City"},
-      {borough: "Queens", name: "Maspeth"},
-      {borough: "Queens", name: "Middle Village"},
-      {borough: "Queens", name: "Ozone Park"},
-      {borough: "Queens", name: "Queens Village"},
-      {borough: "Queens", name: "Rego Park"},
-      {borough: "Queens", name: "Richmond Hill"},
-      {borough: "Queens", name: "Ridgewood"},
-      {borough: "Queens", name: "St. Albans"},
-      {borough: "Queens", name: "Sunnyside"},
-      {borough: "Queens", name: "Utopia"},
-      {borough: "Queens", name: "Whitestone"},
-      {borough: "Queens", name: "Woodhaven"},
-      {borough: "Queens", name: "Woodside"}
+    queens = Borough.where(name: 'Queens').first
+    queens.neighborhoods.create([
+      {name: "Astoria"},
+      {name: "Bayside"},
+      {name: "Bellerose"},
+      {name: "Briarwood"},
+      {name: "College Point"},
+      {name: "Corona"},
+      {name: "Douglaston"},
+      {name: "Elmhurst"},
+      {name: "Far Rockaway"},
+      {name: "Floral Park"},
+      {name: "Flushing"},
+      {name: "Forest Hills"},
+      {name: "Fresh Meadows"},
+      {name: "Glen Oaks"},
+      {name: "Glendale"},
+      {name: "Hollis"},
+      {name: "Howard Beach"},
+      {name: "Jackson Heights"},
+      {name: "Jamaica"},
+      {name: "Kew Gardens"},
+      {name: "Kew Gardens Hills"},
+      {name: "Little Neck"},
+      {name: "Long Island City"},
+      {name: "Maspeth"},
+      {name: "Middle Village"},
+      {name: "Ozone Park"},
+      {name: "Queens Village"},
+      {name: "Rego Park"},
+      {name: "Richmond Hill"},
+      {name: "Ridgewood"},
+      {name: "St. Albans"},
+      {name: "Sunnyside"},
+      {name: "Utopia"},
+      {name: "Whitestone"},
+      {name: "Woodhaven"},
+      {name: "Woodside"}
     ])
   end
 
@@ -328,22 +338,6 @@ class SeedDatabase
     end
   end
 
-  def create_boroughs
-    Borough.create([
-      {name: 'Manhattan'},
-      {name: 'Brooklyn'},
-      {name: 'Queens'}
-    ])
-  end
-
-  def add_borough_ids_to_neighborhoods
-    Neighborhood.all.each do |neighborhood|
-      borough_name = neighborhood[:borough]
-      new_borough = Borough.where(name: borough_name)
-      binding.pry
-      new_borough.neighborhoods.push(neighborhood)
-    end
-  end
 
 end
 

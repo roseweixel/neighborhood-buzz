@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126051344) do
+ActiveRecord::Schema.define(version: 20141126053813) do
 
   create_table "bars", force: true do |t|
     t.integer  "neighborhood_id"
@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 20141126051344) do
   end
 
   create_table "boroughs", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
   end
 
   create_table "favorites", force: true do |t|
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20141126051344) do
 
   create_table "neighborhoods", force: true do |t|
     t.string   "name"
-    t.string   "borough"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "median_buy_price"

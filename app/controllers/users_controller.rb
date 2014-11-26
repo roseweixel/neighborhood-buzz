@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   def create
     if User.find_by(:email => user_params[:email])
       flash[:notice] = "Someone with this email has already signed up!"
-      redirect_to neighborhoods_path
+      redirect_to(:back)
       return
     elsif User.find_by(:username => user_params[:username])
       flash[:notice] = "Sorry, this username is taken!"
-      redirect_to neighborhoods_path
+      redirect_to(:back)
       return
     end
     @new_user = User.new(user_params)
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     else
       flash[:notice] = "Must enter a valid username and email!"
     end 
-    redirect_to neighborhoods_path
+    redirect_to(:back)
   end
 
   def show
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to neighborhoods_path
+    redirect_to(:back)
   end
 
   private
