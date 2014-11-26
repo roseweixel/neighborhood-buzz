@@ -21,6 +21,7 @@
  @import "bootstrap";
 .bg {
   background: url('images/nyc.jpg') no-repeat center center;
+  background-size: cover;
   position: fixed;
   width: 100%;
   height: auto;

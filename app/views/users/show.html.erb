@@ -18,7 +18,7 @@
 	<div class="row">
 	<% @user.neighborhoods.each do |neighborhood| %>
 		<div class="col-md-4" style='padding: 0; background-image: url("<%= image_url(neighborhood.photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
-			<h5 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough}", neighborhood_path(neighborhood) %> <%= link_to "♥", favorite_path(@user.get_favorite_by_neighborhood(neighborhood)), method: :delete, :class => "btn btn-xs btn-primary pull-right" %></h5>
+			<h5 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough.name}", neighborhood_path(neighborhood) %> <%= link_to "♥", favorite_path(@user.get_favorite_by_neighborhood(neighborhood)), method: :delete, :class => "btn btn-xs btn-primary pull-right" %></h5>
 		</div>
 	<% end %>
 	</div>
@@ -27,7 +27,7 @@
 	<div class="row">
 	<% @user.similar_to_favorites_buy_price.each do |neighborhood| %>
 		<div class="col-md-2" style='padding: 0; background-image: url("<%= image_url(neighborhood.user_favorite_photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
-			<h5 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough}", neighborhood_path(neighborhood) %></h5>
+			<h5 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough.name}", neighborhood_path(neighborhood) %></h5>
 		</div>
 	<% end %>
 	</div>
@@ -36,7 +36,7 @@
 	<div class="row">
 	<% @user.similar_to_favorites_rent_price.each do |neighborhood| %>
 		<div class="col-md-2" style='padding: 0; background-image: url("<%= image_url(neighborhood.user_favorite_photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
-			<h5 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough}", neighborhood_path(neighborhood) %></h5>
+			<h5 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough.name}", neighborhood_path(neighborhood) %></h5>
 		</div>
 	<% end %>
 	</div>
