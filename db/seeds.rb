@@ -125,14 +125,16 @@ class SeedDatabase
   "Windsor Terrace"=>"https://farm6.staticflickr.com/5598/15564880711_b7e602a738_o.jpg"
 }
   def initialize
-    create_users
-    create_neighborhoods
-    create_restaurants
-    create_bars
-    add_photo_url_to_neighborhoods
-    add_median_buy_price_to_neighborhoods
-    add_noko_listing_attributes_to_neighborhoods
-    add_median_buy_price_string_to_neighborhoods
+    create_boroughs
+    add_borough_ids_to_neighborhoods
+    # create_users
+    # create_neighborhoods
+    # create_restaurants
+    # create_bars
+    # add_photo_url_to_neighborhoods
+    # add_median_buy_price_to_neighborhoods
+    # add_noko_listing_attributes_to_neighborhoods
+    # add_median_buy_price_string_to_neighborhoods
   end
 
   def create_users
@@ -323,6 +325,23 @@ class SeedDatabase
       bars.each do |bar|
         neighborhood.bars.create(name: bar[:name], url: bar[:url], stars_img: bar[:stars_img], address: bar[:address])
       end
+    end
+  end
+
+  def create_boroughs
+    Borough.create([
+      {name: 'Manhattan'},
+      {name: 'Brooklyn'},
+      {name: 'Queens'}
+    ])
+  end
+
+  def add_borough_ids_to_neighborhoods
+    Neighborhood.all.each do |neighborhood|
+      borough_name = neighborhood[:borough]
+      new_borough = Borough.where(name: borough_name)
+      binding.pry
+      new_borough.neighborhoods.push(neighborhood)
     end
   end
 

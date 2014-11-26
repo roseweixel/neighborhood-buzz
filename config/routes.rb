@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :neighborhoods
+  resources :boroughs do
+    resources :neighborhoods
+  end
 
   resources :users
 

@@ -3,6 +3,7 @@ require 'date'
 require 'flickr.rb'
 
 class Neighborhood < ActiveRecord::Base
+  belongs_to :borough
   has_many :favorites
   has_many :users, through: :favorites
   has_many :restaurants

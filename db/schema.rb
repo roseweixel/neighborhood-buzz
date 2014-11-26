@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125035310) do
+ActiveRecord::Schema.define(version: 20141126051344) do
 
   create_table "bars", force: true do |t|
     t.integer  "neighborhood_id"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 20141125035310) do
     t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "boroughs", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "favorites", force: true do |t|
@@ -50,6 +56,7 @@ ActiveRecord::Schema.define(version: 20141125035310) do
     t.string   "noko_monthly_rent_3"
     t.string   "photo_url"
     t.string   "median_buy_price_string"
+    t.integer  "borough_id"
   end
 
   create_table "restaurants", force: true do |t|
@@ -58,6 +65,13 @@ ActiveRecord::Schema.define(version: 20141125035310) do
     t.string   "url"
     t.string   "stars_img"
     t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_boroughs", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "borough_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
