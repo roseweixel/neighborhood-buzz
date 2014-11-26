@@ -9,10 +9,15 @@
   <div class="row">
 	<% if @user.favorites.size >= 1%>
 	<div class="pull-right">
+	<% if @user.want_to_buy %>
 	<h3>Average Buying Price: <%= @user.average_price_string(@user.average_buy_price_of_favorites) %></h3>
+	<% end %>
+	<% if @user.want_to_rent %>
 	<h3>Average Rental Price: <%= @user.average_price_string(@user.average_rent_price_of_favorites) %></h3>
 	<% end %>
 	</div>
+	<% end %>
+	
 	<br>
 	</div>
 	<div class="row">
