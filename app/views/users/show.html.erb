@@ -23,10 +23,10 @@
 	<% end %>
 	</div>
 	<% if @user.favorites.size >= 1%>
-	<h3>Neighborhoods Similar in Price</h3>
+	<h3>Neighborhoods Similar in Ownership Price</h3>
 	<div class="row">
 	<% @user.similar_to_favorites_buy_price.each do |neighborhood| %>
-		<div class="col-md-3" style='padding: 0; background-image: url("<%= image_url(neighborhood.user_favorite_photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
+		<div class="col-md-2" style='padding: 0; background-image: url("<%= image_url(neighborhood.user_favorite_photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
 			<h5 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough}", neighborhood_path(neighborhood) %></h5>
 		</div>
 	<% end %>
@@ -35,7 +35,7 @@
 	<h3>Neighborhoods Similar in Rent</h3>
 	<div class="row">
 	<% @user.similar_to_favorites_rent_price.each do |neighborhood| %>
-		<div class="col-md-3" style='padding: 0; background-image: url("<%= image_url(neighborhood.user_favorite_photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
+		<div class="col-md-2" style='padding: 0; background-image: url("<%= image_url(neighborhood.user_favorite_photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
 			<h5 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough}", neighborhood_path(neighborhood) %></h5>
 		</div>
 	<% end %>

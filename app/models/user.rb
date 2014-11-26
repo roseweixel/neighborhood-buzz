@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
 
   def similar_to_favorites_rent_price
     delta = average_rent_price_of_favorites / 20
-    results = Neighborhood.select{|neighborhood| neighborhood.median_buy_price.between?((average_rent_price_of_favorites - delta), (average_rent_price_of_favorites + delta)) && !self.neighborhoods.include?(neighborhood)}
+    results = Neighborhood.select{|neighborhood| neighborhood.median_rental_price_integer.between?((average_rent_price_of_favorites - delta), (average_rent_price_of_favorites + delta)) && !self.neighborhoods.include?(neighborhood)}
     results
   end
 
