@@ -24,9 +24,9 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <div class="cprofile">
-                                        <p>Typical Buying Price: <%= @neighborhood.median_buy_price_string %><br>
+                                        <h5>Typical Buying Price: <%= @neighborhood.median_buy_price_string %><br>
                                         Median Monthly Rent: <%= @neighborhood.median_rental_price %><br><br>
-                                        New Listings:</p>
+                                        New Listings:</h5>
 
                                         <%= image_tag("#{@neighborhood.noko_img_url_1}" ) %>
                                         <%= link_to("View This Listing", @neighborhood.noko_listing_url_1, :target => "_blank") %><br>
@@ -44,20 +44,20 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
-                                    <div>
-                                        <p>Recommended Bars<p>
+                                    <div class="cprofile">
+                                        <h5>Recommended Bars</h5>
                                         <ul>
                                           <% @neighborhood.bars.each do |bar| %>
                                             <h6><%= link_to bar.name, bar.url, :target => "_blank" %></h6>
-                                            <%= image_tag("#{bar.stars_img}", height: "15", width: "75") %><br>
+                                            <%= image_tag("#{bar.stars_img}", style:"width: 70%;") %><br>
                                             <%= bar.address %><br>
                                           <% end %>
                                         </ul>
-                                        <p>Recommended Restaurants</p>
+                                        <h5>Recommended Restaurants</h5>
                                         <ul>
                                           <% @neighborhood.restaurants.each do |restaurant| %>
                                             <h6><%= link_to restaurant.name, restaurant.url, :target => "_blank" %></h6>
-                                            <%= image_tag("#{restaurant.stars_img}", height: "15", width: "75") %><br>
+                                            <%= image_tag("#{restaurant.stars_img}", style:"width: 70%;") %><br>
                                             <%= restaurant.address %><br>
                                           <% end %>
                                         </ul>
@@ -66,7 +66,7 @@
                                 <div class="col-lg-3">
                                     <div class="cprofile">
                                           <% if @neighborhood.get_tweets %>
-                                              <p>What People Are Saying About</p>
+                                              <h5>What People Are Saying About</h5>
                                               <span class="neighborhood-name"><%= @neighborhood.name %></span>
                                               <% @neighborhood.get_tweets.each do |tweet| %>
                                                 <blockquote class="twitter-tweet" lang="en" data-cards="hidden">
