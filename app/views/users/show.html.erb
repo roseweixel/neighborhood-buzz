@@ -20,7 +20,7 @@
 	
 	<br>
 	</div>
-	<div class="row">
+		<div class="row">
 	<% @user.neighborhoods.each do |neighborhood| %>
 		<div class="col-md-4" style='padding: 0; background-image: url("<%= image_url(neighborhood.photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
 			<h5 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough.name}", neighborhood_path(neighborhood) %> <%= link_to "♥", favorite_path(@user.get_favorite_by_neighborhood(neighborhood)), method: :delete, :class => "btn btn-xs btn-primary pull-right" %></h5>
@@ -66,7 +66,7 @@
 	<% end %>
 
 	<%if @user.min_rent_price && @user.max_rent_price && (@user.want_to_rent || @user.want_to_buy == @user.want_to_rent) %>
-		<div class="wrapper">
+
 			<div class="row">
 			<h3>Neighborhoods In Your Rental Price Range</h3>
 			
@@ -78,7 +78,7 @@
 				<% end %>
 			<% end %>
 			</div>
-		</div>
+
 	<% end %>
 </div>	
 </div>
