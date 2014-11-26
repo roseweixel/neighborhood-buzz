@@ -6,7 +6,7 @@
       <hr/>
     </div>
   </div>
-  <div class="row">
+  <div class="row" style="margin-top:-20px">
 	<% if @user.favorites.size >= 1%>
 	<div class="pull-right">
 	<% if @user.want_to_buy %>
@@ -50,7 +50,7 @@
 		<% end %>
 	<% end %>
 	<%if @user.min_buy_price && @user.max_buy_price && (@user.want_to_buy || @user.want_to_buy == @user.want_to_rent) %>
-		<div class="wrapper">
+
 			<div class="row">
 			<h3>Neighborhoods In Your Buy Price Range</h3>
 			
@@ -62,7 +62,7 @@
 				<% end %>
 			<% end %>
 			</div>
-		</div>
+
 	<% end %>
 
 	<%if @user.min_rent_price && @user.max_rent_price && (@user.want_to_rent || @user.want_to_buy == @user.want_to_rent) %>
