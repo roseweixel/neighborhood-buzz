@@ -21,6 +21,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @rental_counter = 0
+    @buying_counter = 0
   end
 
   def edit

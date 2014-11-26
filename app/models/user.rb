@@ -66,11 +66,11 @@ class User < ActiveRecord::Base
   end
 
   def in_rental_price_range
-    Neighborhood.where(median_rental_price_integer: min_rent_price..max_rent_price).sample(12)
+    Neighborhood.where(median_rental_price_integer: min_rent_price..max_rent_price)
   end
 
   def in_buy_price_range
-    Neighborhood.where(median_buy_price: min_buy_price..max_buy_price).sample(12)
+    Neighborhood.where(median_buy_price: min_buy_price..max_buy_price)
   end
 
   def similar_to_favorites_rent_price

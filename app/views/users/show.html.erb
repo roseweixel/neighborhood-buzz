@@ -55,10 +55,11 @@
 			<h3>Neighborhoods In Your Buy Price Range</h3>
 			
 			<% @user.in_buy_price_range.each do |neighborhood| %>
-				<% if @user.liked_boroughs.include?(neighborhood.borough) %>
+				<% if (@user.liked_boroughs.include? neighborhood.borough) && (@buying_counter < 12) %>
 				<div class="col-md-2" style='padding: 0; background-image: url("<%= image_url(neighborhood.photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
 					<h5 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough.name}", neighborhood_path(neighborhood) %></h5>
 				</div>
+				<% @buying_counter += 1 %>
 				<% end %>
 			<% end %>
 			</div>
@@ -69,12 +70,12 @@
 
 			<div class="row">
 			<h3>Neighborhoods In Your Rental Price Range</h3>
-			
 			<% @user.in_rental_price_range.each do |neighborhood| %>
-				<% if @user.liked_boroughs.include? neighborhood.borough %>
+				<% if (@user.liked_boroughs.include? neighborhood.borough) && (@rental_counter < 12) %>
 					<div class="col-md-2" style='padding: 0; background-image: url("<%= image_url(neighborhood.photo_url)%>"); background-size: cover; background-position: center; background-repeat: no-repeat; height: 270px;'>
 						<h5 style='color: black; background:rgba(55,55,55,.7); margin: 0; width: 100%; padding: 10px;'><%= link_to "#{neighborhood.name}, #{neighborhood.borough.name}", neighborhood_path(neighborhood) %></h5>
 					</div>
+					<% @rental_counter += 1 %>
 				<% end %>
 			<% end %>
 			</div>
