@@ -2,15 +2,6 @@ class User < ActiveRecord::Base
   has_many :favorites
   has_many :neighborhoods, through: :favorites
 
-  validates :username, presence: true
-  validates :username, uniqueness: { case_sensitive: false }
-  validates :email, presence: true
-  validates :email, uniqueness: { case_sensitive: false }
-
-  before_save do
-    self.slug = username.gsub(" ", "-").downcase
-  end
-
   NULL_ATTRS = %w( commute_address commute_city )
   before_save :nil_if_blank
 
@@ -18,8 +9,23 @@ class User < ActiveRecord::Base
     NULL_ATTRS.each { |attr| self[attr] = nil if self[attr].blank? }
   end
 
+  def self.from_omniauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.info.name
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.save!
+    end
+  end
+
   def self.find_by_slug(slug)
     User.all.find_by(slug: slug)
+  end
+
+  def formatted_first_name
+    name.split.first.capitalize
   end
 
   def get_favorite_by_neighborhood(neighborhood)

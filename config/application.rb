@@ -15,6 +15,18 @@ Bundler.require(*Rails.groups)
 
 module NeighborhoodBuzz
   class Application < Rails::Application
+    
+    # Loads app config from /config/env_vars.yml
+    require 'yaml'
+    rails_root = Rails.root || File.dirname(__FILE__) + '/../..'
+    config = YAML.load_file(rails_root.to_s + '/config/application.yml')
+    if config.key?(Rails.env) && config[Rails.env].is_a?(Hash)
+      config[Rails.env].each do |key, value|
+        ENV[key] = value.to_s
+      end
+    end
+  end
+end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -26,5 +38,5 @@ module NeighborhoodBuzz
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-  end
-end
+#   end
+# end

@@ -66,6 +66,9 @@ group :assets do
   gem 'font-awesome-rails'
 end
 
+gem 'omniauth'
+gem 'omniauth-facebook', '1.4.0'
+
 gem "bootstrap-sass", "~> 3.1.1"
 
 gem "figaro"

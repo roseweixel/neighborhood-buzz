@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126174953) do
+ActiveRecord::Schema.define(version: 20141127033545) do
 
   create_table "bars", force: true do |t|
     t.integer  "neighborhood_id"
@@ -76,15 +76,20 @@ ActiveRecord::Schema.define(version: 20141126174953) do
     t.string   "slug"
     t.string   "commute_address"
     t.string   "commute_city"
-    t.boolean  "want_to_rent",    default: true
-    t.boolean  "want_to_buy",     default: true
-    t.integer  "min_rent_price",  default: 0
-    t.integer  "max_rent_price",  default: 10000000
-    t.integer  "min_buy_price",   default: 0
-    t.integer  "max_buy_price",   default: 10000000
-    t.boolean  "likes_manhattan", default: true
-    t.boolean  "likes_brooklyn",  default: true
-    t.boolean  "likes_queens",    default: true
+    t.boolean  "want_to_rent",     default: true
+    t.boolean  "want_to_buy",      default: true
+    t.integer  "min_rent_price",   default: 0
+    t.integer  "max_rent_price",   default: 10000000
+    t.integer  "min_buy_price",    default: 0
+    t.integer  "max_buy_price",    default: 10000000
+    t.boolean  "likes_manhattan",  default: true
+    t.boolean  "likes_brooklyn",   default: true
+    t.boolean  "likes_queens",     default: true
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
 end

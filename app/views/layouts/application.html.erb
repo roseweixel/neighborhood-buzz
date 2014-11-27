@@ -11,14 +11,14 @@
   <script src="https://maps.googleapis.com/maps/api/js"></script>
 </head>
 <body>
-
   <nav class="nav navbar-default navbar-fixed-top" roll="navigation">
       <div class="navbar-header">
         <%= link_to("Neighborhood Buzz", root_path, class: "navbar-brand") %>
       </div>
       <% if session[:user_id] %>
       <ul class="nav navbar-nav">
-            <li style="margin-left: 50px;"><%= link_to("Hello #{@user.username}. See your favorites.", user_path(@user))  %></li> 
+            <!-- Welcome <strong>?  </strong>! -->
+            <li style="margin-left: 50px;"><%= link_to("Welcome, #{current_user.formatted_first_name}! See your favorites.", user_path(@user))  %></li> 
 
             <li class="dropdown" style="margin-right: 20px;">
               <a href="" class="dropdown-toggle" data-toggle="dropdown">
@@ -27,10 +27,6 @@
               </a>
               <div class="dropdown-menu" style="padding: 10px; width: 150%;">
                 <%= form_for(@user, :html => {:roll => "form"}) do |f| %>
-                  <div class="form-group">
-                  <%= f.label :username %><br>
-                  <%= f.text_field :username, value: @user.username %><br>
-                  </div>
                   <div class="form-group">
                   <%= f.label :email %><br>
                   <%= f.text_field :email, value: @user.email %><br>
@@ -63,7 +59,7 @@
             </li>
   
 
-            <li><%= link_to("Logout", logout_path) %></li>
+            <li><%= link_to("Logout", logout_path, id:"sign_out") %></li>
 
         </ul> 
       <% end %>
@@ -71,44 +67,8 @@
 
         <% if !session[:user_id] %>
           <div class="nav navbar-nav navbar-right">
-            <li class="dropdown" style="margin-right: 20px;">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                Sign In
-                <b class="caret"></b>
-              </a>
-              <div class="dropdown-menu" style="padding: 10px;">
-                <%= form_tag(sessions_path, :class => "form-menu", :roll => "form") do %>
-                  <div class="form-group">
-                    <input type="text" name="username" placeholder="username" />
-                  </div>
-                  <input class="navbar-btn" name="commit" type="submit" value="Sign In">
-                <% end %>
-              </div>
-            </li>
-
-            <li class="dropdown" style="margin-right: 40px;">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                Sign Up
-                <b class="caret"></b>
-              </a>
-              <div class="dropdown-menu" style="padding: 10px;">
-                <%= form_for(User.new, :html => {:class => "form-menu", :roll => "form"}) do |f| %>
-                  <div class="form-group">
-                    <%= f.text_field :username, placeholder: "username" %>
-                  </div>
-                  <div class="form-group">
-                    <%= f.text_field :email, placeholder: "email address" %>
-                  </div>
-                  <div class="form-group">
-                    <%= f.label "Where you commute to" %>:<br>
-                    <%= f.label "Street Address" %><br>
-                    <%= f.text_field :commute_address, @commute_value => @commute_place %><br>
-                    <%= f.label "City" %><br>
-                    <%= f.text_field :commute_city, @city_value => @city %><br>
-                  </div>
-                  <%= f.submit "Sign Up", class: "navbar-btn" %>
-                <% end %>
-              </div>
+            <li>
+            <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
             </li>
           </div>
         <% end %>
@@ -122,8 +82,10 @@
     </div>
 
         <%= yield %>
+
   <div class="container">
-    </div>
+
+  </div>
   <div class="container">
   <div class="row">
   
