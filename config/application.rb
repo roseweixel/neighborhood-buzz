@@ -14,7 +14,7 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 
 module NeighborhoodBuzz
-  # class Application < Rails::Application
+  class Application < Rails::Application
     
   #   # Loads app config from /config/env_vars.yml
   #   require 'yaml'
@@ -25,7 +25,7 @@ module NeighborhoodBuzz
   #       ENV[key] = value.to_s
   #     end
   #   end
-  # end
+  end
 end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
