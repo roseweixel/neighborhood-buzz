@@ -47,8 +47,10 @@
                   <%= f.number_field(:min_rent_price, :style => "width:42%;")%> to <%= f.number_field(:max_rent_price, :style => "width:42%;")%><br>
                   <%= f.check_box(:want_to_buy) %>
                   <%= f.label(:want_to_buy, "looking to buy") %><br>
-                  <%= f.label("Buying price range") %><br>
-                  <%= f.number_field(:min_buy_price, :style => "width:42%;")%> to <%= f.number_field(:max_buy_price, :style => "width:42%;")%><br>
+                  <%= f.label(:min_buy_price, "minimum buy price: ") %><br>
+                  <%= f.range_field :min_buy_price, :min=>0, :max=>10000000, :class=>"slider", :id=>"slider1"%>
+                  <%= f.label(:max_buy_price, "maximum buy price: ") %><br>
+                  <%= f.range_field :max_buy_price, :min=>0, :max=>10000000, :class=>"slider", :id=>"slider2"%><br>
                   </div>
                   <%= f.label("Boroughs you're interested in") %><br>
                   <%= f.check_box(:likes_manhattan) %>
@@ -132,3 +134,13 @@
 
 </body>
 </html>
+<script>
+$(".edit_user").ready(function() { 
+  console.log("hello")
+  //debugger;
+  $form = $('form');
+  $input_value = $form.children("#user_min_buy_price").val();
+  $label = $form.children("#user_min_buy_price").siblings("label");
+  $label.text("minimum buy price: " + $input_value);
+})
+</script >
