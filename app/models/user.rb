@@ -65,11 +65,6 @@ class User < ActiveRecord::Base
     formatted_string
   end
 
-  def similar_to_favorites_buy_price
-    delta = average_buy_price_of_favorites / 20
-    results = Neighborhood.select{|neighborhood| neighborhood.median_buy_price.between?((average_buy_price_of_favorites - delta), (average_buy_price_of_favorites + delta)) && !self.neighborhoods.include?(neighborhood)}
-    results
-  end
 
   def in_rental_price_range
     Neighborhood.where(median_rental_price_integer: min_rent_price..max_rent_price)
@@ -78,11 +73,17 @@ class User < ActiveRecord::Base
   def in_buy_price_range
     Neighborhood.where(median_buy_price: min_buy_price..max_buy_price)
   end
+  
+  def similar_to_favorites_buy_price
+    delta = average_buy_price_of_favorites / 20
+    results = Neighborhood.select{|neighborhood| neighborhood.median_buy_price.between?((average_buy_price_of_favorites - delta), (average_buy_price_of_favorites + delta)) && !self.neighborhoods.include?(neighborhood)}
+    results.sample(12)
+  end
 
   def similar_to_favorites_rent_price
     delta = average_rent_price_of_favorites / 15
     results = Neighborhood.select{|neighborhood| neighborhood.median_rental_price_integer.between?((average_rent_price_of_favorites - delta), (average_rent_price_of_favorites + delta)) && !self.neighborhoods.include?(neighborhood)}
-    results
+    results.sample(12)
   end
 
   def liked_boroughs
