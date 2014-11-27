@@ -125,7 +125,6 @@ class SeedDatabase
   "Windsor Terrace"=>"https://farm6.staticflickr.com/5598/15564880711_b7e602a738_o.jpg"
 }
   def initialize
-    create_users
     create_boroughs
     create_neighborhoods_from_boroughs
     create_restaurants
@@ -134,14 +133,6 @@ class SeedDatabase
     add_median_buy_price_to_neighborhoods
     add_noko_listing_attributes_to_neighborhoods
     add_median_buy_price_string_to_neighborhoods
-  end
-
-  def create_users
-    User.create([
-      {username: 'Bob', email: 'bob@example.com', commute_address: '11 Broadway'},
-      {username: 'Alice', email: 'alice@example.com', commute_address: '1740 Broadway'},
-      {username: 'Jerry', email: 'jdog@example.com', commute_address: '646 Lenox Avenue'}
-    ])
   end
 
   def create_boroughs
