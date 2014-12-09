@@ -24,8 +24,12 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <div class="cprofile" style="height: 500px;overflow: scroll;">
-                                        <h5>Typical Buying Price: <%= @neighborhood.median_buy_price_string %><br>
-                                        Median Monthly Rent: <%= @neighborhood.median_rental_price %><br><br>
+                                        <% if @neighborhood.median_buy_price > 0 %>
+                                            <h5>Typical Buying Price: <%= @neighborhood.median_buy_price_string %><br>
+                                        <% end %>
+                                        <% if @neighborhood.median_rental_price > 0 %>
+                                            Median Monthly Rent: <%= @neighborhood.median_rental_price %><br><br>
+                                        <% end %>
                                         New Listings:</h5>
 
                                         <%= image_tag("#{@neighborhood.noko_img_url_1}" ) %>
