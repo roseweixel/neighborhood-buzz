@@ -26,9 +26,11 @@
                                     <div class="cprofile" style="height: 500px;overflow: scroll;">
                                         <% if @neighborhood.median_buy_price > 0 %>
                                             <h5>Typical Buying Price: <%= @neighborhood.median_buy_price_string %><br>
+                                        <% else %>
+                                            <h5></h5>
                                         <% end %>
-                                        <% if @neighborhood.median_rental_price > 0 %>
-                                            Median Monthly Rent: <%= @neighborhood.median_rental_price %><br><br>
+                                        <% if @neighborhood.median_rental_price_integer > 0 %>
+                                            <strong>Median Monthly Rent:</strong> <%= @neighborhood.median_rental_price %><br><br>
                                         <% end %>
                                         New Listings:</h5>
 
