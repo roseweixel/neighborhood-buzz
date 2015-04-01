@@ -125,11 +125,11 @@ class SeedDatabase
   "Windsor Terrace"=>"https://farm6.staticflickr.com/5598/15564880711_b7e602a738_o.jpg"
 }
   def initialize
-    create_boroughs
-    create_neighborhoods_from_boroughs
+    # create_boroughs
+    # create_neighborhoods_from_boroughs
     create_restaurants
     create_bars
-    add_photo_url_to_neighborhoods
+    # add_photo_url_to_neighborhoods
     add_median_buy_price_to_neighborhoods
     add_noko_listing_attributes_to_neighborhoods
     add_median_buy_price_string_to_neighborhoods
