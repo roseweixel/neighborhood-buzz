@@ -130,9 +130,9 @@ class SeedDatabase
     create_restaurants
     create_bars
     # add_photo_url_to_neighborhoods
-    add_median_buy_price_to_neighborhoods
+    # add_median_buy_price_to_neighborhoods
     add_noko_listing_attributes_to_neighborhoods
-    add_median_buy_price_string_to_neighborhoods
+    # add_median_buy_price_string_to_neighborhoods
   end
 
   def create_boroughs
@@ -271,22 +271,22 @@ class SeedDatabase
     end
   end
 
-  def add_median_buy_price_to_neighborhoods
-    Neighborhood.all.each do |neighborhood|
-      sleep(0.1)
-      money_string = neighborhood.find_50th_percentile
-      median_buy_price = money_string.gsub(/[$,]/, "").to_i
-      neighborhood.update(median_buy_price: median_buy_price)
-    end
-  end
+  # def add_median_buy_price_to_neighborhoods
+  #   Neighborhood.all.each do |neighborhood|
+  #     sleep(0.1)
+  #     money_string = neighborhood.find_50th_percentile
+  #     median_buy_price = money_string.gsub(/[$,]/, "").to_i
+  #     neighborhood.update(median_buy_price: median_buy_price)
+  #   end
+  # end
 
-  def add_median_buy_price_string_to_neighborhoods
-    Neighborhood.all.each do |neighborhood|
-      sleep(0.1)
-      money_string = neighborhood.find_50th_percentile
-      neighborhood.update(median_buy_price_string: money_string)
-    end
-  end
+  # def add_median_buy_price_string_to_neighborhoods
+  #   Neighborhood.all.each do |neighborhood|
+  #     sleep(0.1)
+  #     money_string = neighborhood.find_50th_percentile
+  #     neighborhood.update(median_buy_price_string: money_string)
+  #   end
+  # end
 
   def add_noko_listing_attributes_to_neighborhoods
     Neighborhood.all.each do |neighborhood|
