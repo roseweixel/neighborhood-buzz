@@ -67,7 +67,7 @@ group :assets do
 end
 
 gem 'omniauth'
-gem 'omniauth-facebook', '1.4.0'
+gem 'omniauth-facebook', '4.0.0'
 
 gem "bootstrap-sass", "~> 3.1.1"
 
